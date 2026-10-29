@@ -40,5 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Cloudflare / OpenNext
+/.open-next/
+/.wrangler/
+.dev.vars*
+
 
 /design-system/
