@@ -23,7 +23,7 @@ Falls eine Aufgabenstellung bereits Requirements oder IDs (z. B. FR001) vorgibt:
 
 | ID    | Requirement                                                                                                                                                      | Implementation | Review       |
 | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------ |
-| FR001 | **[MUSS]** Die öffentliche Website zeigt meine Developer-Identität und ausgewählte Projekte.                                                                     | Open           | Not Reviewed |
+| FR001 | **[MUSS]** Die öffentliche Website zeigt meine Developer-Identität und ausgewählte Projekte.                                                                     | In Progress    | In Review    |
 | FR002 | **[MUSS]** Der Verwaltungsbereich ist durch eine Anmeldung vor unberechtigtem Zugriff geschützt.                                                                 | Open           | Not Reviewed |
 | FR003 | **[MUSS]** Im Dashboard können neue Projekte angelegt werden.                                                                                                    | Open           | Not Reviewed |
 | FR004 | **[MUSS]** Im Dashboard können bestehende Projektinformationen bearbeitet werden.                                                                                | Open           | Not Reviewed |
@@ -55,6 +55,18 @@ Andere Zwischenstände bei Bedarf klar benennen; keine künstlichen Häkchen set
 ## 🔎 REVIEW NOTES
 
 Kurze Notizen **nur dann ergänzen, wenn tatsächlich eine Prüfung stattgefunden hat**. Keine leeren Review-Protokolle für jede Anforderung nötig.
+
+### Abgleich · 31.10.2026
+
+**Erfüllungsstand:** Keine der vollständigen Anforderungen FR001–FR009 ist derzeit nachweislich vollständig erfüllt. `In Progress` bedeutet hier teilweise umgesetzt; `In Review` bei FR001 bezeichnet einen belegten Teilreview, keine Freigabe der Gesamtanforderung.
+
+- **FR001 — teilweise erfüllt:** `/` zeigt Kats kurze Developer-Begrüßung und vier Themenkarten. Karteninhalte in `HomeCards.tsx`, gemeinsame Struktur in `HomeCard.tsx`, WebP-Importe in `src/lib/images.ts`, Gestaltung in CSS Modules. Die Karte „Meine Projekte“ enthält noch keine ausgewählten Projekt-Datensätze oder konkrete Projektübersicht. Dieser fachliche Teil fehlt; daher weder `Done` noch `Passed`.
+- **Teilprüfung FR001:** Code geprüft; TypeScript, ESLint (eine bekannte Assetpack-Warnung) und Produktionsbuild erfolgreich. Im vorangegangenen Korrekturlauf waren vier gestaltete Karten in Safari sichtbar, CSS-Module-Klassen und Bildbegrenzung nachgewiesen. Keine vollständige Responsive-/Accessibility-Prüfung oder aktuelle Online-Prüfung; keine vollständige WCAG-Konformität belegt.
+- **FR002–FR007 — offen:** Im aktuellen `src/` fehlen Admin-/Login-/Dashboard-Routen, Persistenz, CRUD-Funktionen und Veröffentlichungssteuerung. Codebestand geprüft; mangels Umsetzung keine positiven Funktionstests. Die Review-Spalte bleibt `Not Reviewed` für die späteren Verhaltensprüfungen.
+- **FR008–FR009 — offen, optional:** Keine Projektaufgaben, Statusspeicherung, Fortschrittsberechnung oder Fortschrittsanzeige implementiert.
+
+Die fachlichen Formulierungen bleiben unverändert. Gestaltete Themenkarten erfüllen weder Projektverwaltung noch Veröffentlichungsfilter. Bekannte Navigations- und Semantikprobleme sowie der Git-Blocker für die vier neuen Bilder stehen in `PROJECT_STATE.md`; sie werden in diesem Dokumentationsauftrag nicht durch Codeänderungen gelöst.
+
 
 <!--
 BEISPIELSTRUKTUR (kein echtes Review-Ergebnis):

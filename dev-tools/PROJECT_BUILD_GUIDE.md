@@ -7,7 +7,7 @@
 **Ordner:** `01_katcoded-de-v01`  
 **Stack:** Next.js App Router · React · TypeScript · Tailwind CSS · Neon PostgreSQL · Cloudflare Workers  
 **Mein Ziel:** Öffentliche Developer-Website + geschütztes Projekt-Dashboard für meine Projekte.  
-**Stand:** Planung vor dem ersten Next.js-Setup · Alle Aufgaben noch offen.
+**Stand:** 31.10.2026 · Stage 01 technisch abgeschlossen; Stage 02 in Arbeit. Einzelne technische Prüfungen und eine frühere Cloudflare-Bereitstellung sind bereits erfolgt; das MVP ist noch nicht fertig.
 
 **KAT-NOTIZ 👻** Das ist mein Bauplan, kein Pflichtenheft aus Stein. Wenn ich beim Entwickeln einen besseren Weg finde, dokumentiere ich die Entscheidung und passe die Route an. Das MVP bleibt trotzdem bewusst klein.
 
@@ -37,6 +37,8 @@
 
 # STAGE 01 · Projektgrundlage schaffen
 
+**Nachweis · 31.10.2026:** Grundgerüst, DEV TOOLS, Git und lokale Laufzeit vorhanden; TypeScript und Produktionsbuild erfolgreich, ESLint ohne Fehler. Frühere Setup-/Buildbeschränkungen sind überholt. Offene Verständnis-Lernziele bleiben bis zu Kats Bestätigung offen; der damalige Initialisierungsweg wird nicht allein aus dem heutigen Code rekonstruiert.
+
 ## 🎯 ZIEL
 
 Mein bestehender Projektordner bekommt ein funktionierendes Next.js-Grundgerüst. `dev-tools/`, `AGENTS.md` und `README.md` bleiben erhalten.
@@ -45,10 +47,10 @@ Mein bestehender Projektordner bekommt ein funktionierendes Next.js-Grundgerüst
 
 ### 1 · Bestehenden Projektordner prüfen
 
-- [ ] Vorhandenen Ordner `01_katcoded-de-v01` verwenden.
-- [ ] Dateien und Unterordner ansehen.
-- [ ] `dev-tools/`, `AGENTS.md`, `README.md` schützen.
-- [ ] Prüfen, ob `package.json`/Git schon vorhanden sind.
+- [x] Vorhandenen Ordner `01_katcoded-de-v01` verwenden.
+- [x] Dateien und Unterordner ansehen.
+- [x] `dev-tools/`, `AGENTS.md`, `README.md` schützen.
+- [x] Prüfen, ob `package.json`/Git schon vorhanden sind.
 
 #### 🧱 DAFÜR BRAUCHST DU · Terminal-Basics
 
@@ -63,10 +65,10 @@ find . -maxdepth 2 -type f | sort  # Dateien bis Ebene 2
 ### 2 · Next.js initialisieren
 
 - [ ] Vorgehen für Initialisierung im **nicht leeren** Projektordner prüfen.
-- [ ] Next.js, TypeScript und App Router einrichten.
-- [ ] Tailwind und ESLint einrichten bzw. prüfen.
-- [ ] Prüfen, dass vorhandene Dateien erhalten bleiben.
-- [ ] Neue Abhängigkeiten und Konfigurationen ansehen.
+- [x] Next.js, TypeScript und App Router einrichten.
+- [x] Tailwind und ESLint einrichten bzw. prüfen.
+- [x] Prüfen, dass vorhandene Dateien erhalten bleiben.
+- [x] Neue Abhängigkeiten und Konfigurationen ansehen.
 
 #### 🧱 DAFÜR BRAUCHST DU · Projektgenerator
 
@@ -88,7 +90,7 @@ npx create-next-app@latest --help
 - [ ] `src/app/` und App Router verstehen.
 - [ ] `page.tsx` und `layout.tsx` unterscheiden.
 - [ ] Server und Client Components unterscheiden.
-- [ ] Generierte Dateien ansehen.
+- [x] Generierte Dateien ansehen.
 
 #### 🧱 DAFÜR BRAUCHST DU · Dateibasiertes Routing
 
@@ -125,11 +127,11 @@ Server Components können serverseitig Daten laden. Für `useState` und Klick-Ha
 
 ### 4 · Entwicklungsumgebung starten
 
-- [ ] Abhängigkeiten installieren, falls nötig.
-- [ ] Entwicklungsserver starten.
-- [ ] Startseite im Browser öffnen.
-- [ ] Fehlermeldungen prüfen.
-- [ ] Git-Status ansehen.
+- [x] Abhängigkeiten installieren, falls nötig.
+- [x] Entwicklungsserver starten.
+- [x] Startseite im Browser öffnen.
+- [x] Fehlermeldungen prüfen.
+- [x] Git-Status ansehen.
 
 #### 🧱 DAFÜR BRAUCHST DU · npm und Git
 
@@ -143,14 +145,18 @@ git status           # zeigt lokale Änderungen
 
 ## ✅ FERTIG, WENN
 
-- [ ] Next.js läuft lokal und eine Seite ist im Browser sichtbar.
-- [ ] TypeScript/App Router sind eingerichtet.
-- [ ] DEV TOOLS sind erhalten.
-- [ ] Keine blockierenden Setupfehler sind bekannt.
+- [x] Next.js läuft lokal und eine Seite ist im Browser sichtbar.
+- [x] TypeScript/App Router sind eingerichtet.
+- [x] DEV TOOLS sind erhalten.
+- [x] Keine blockierenden Setupfehler sind bekannt.
 
 ---
 
 # STAGE 02 · Öffentliche Website aufbauen
+
+**Teilstand · 31.10.2026:** Homepage-Grundgerüst und vier CUTE_COZY-Themenkarten umgesetzt. `page.tsx` setzt `HomeHero` und `HomeCards` zusammen; `HomeCard` rendert die gemeinsame Struktur, `src/lib/images.ts` verwaltet Bilder, zwei CSS Modules die Kartengestaltung. Tokens sind über `layout.tsx` eingebunden. Native CSS-Module-Verarbeitung ist nach gezieltem Ausschluss aus der globalen Turbopack-CSS-Regel wiederhergestellt.
+
+Das responsive Grundlayout ist vorhanden (Karten: 1/2/4 Spalten, 48rem/80rem). Safari-Sichtprüfung mit zwei Spalten sowie Klassen und Bildbegrenzung bestanden; die vollständige Breiten-/Zoom-/Accessibility-Matrix steht aus. Die Vorbereitung eines Developer-Bereichs ist durch die kurze Begrüßung belegt, keine vollständige Über-mich-Seite. Eine Themenkarte ist noch keine Übersicht ausgewählter Projekte. Navigationseinträge existieren, ihre fünf Abschnitts-IDs fehlen jedoch. Dashboard-Platzhalter fehlt. Deshalb bleiben die vollständigen Abschlusskriterien offen.
 
 ## 🎯 ZIEL
 
@@ -160,8 +166,8 @@ Die öffentliche Website bekommt ihre ersten Seiten und eine Navigation. Für da
 
 ### 1 · Öffentliche Seitenstruktur erstellen
 
-- [ ] Startseite vorbereiten.
-- [ ] Bereich zur Developer-Identität vorsehen.
+- [x] Startseite vorbereiten.
+- [x] Bereich zur Developer-Identität vorsehen.
 - [ ] Projektübersicht vorbereiten.
 - [ ] Navigation zwischen öffentlichen Seiten bauen.
 
@@ -218,10 +224,10 @@ src/app/
 
 ### 3 · Gemeinsames Layout und Styling vorbereiten
 
-- [ ] Header, Hauptinhalt und Navigation planen.
-- [ ] Responsive Grundlayout erstellen.
-- [ ] Farben, Typografie und Abstände festlegen.
-- [ ] Developer-Identität als Designrichtung berücksichtigen.
+- [x] Header, Hauptinhalt und Navigation planen.
+- [x] Responsive Grundlayout erstellen.
+- [x] Farben, Typografie und Abstände festlegen.
+- [x] Developer-Identität als Designrichtung berücksichtigen.
 
 #### 🧱 DAFÜR BRAUCHST DU · Semantisches HTML
 
@@ -663,6 +669,10 @@ Auch direkte URLs und mögliche API-Routen prüfen. Bei gecachten Seiten sichers
 
 # STAGE 07 · Testen und veröffentlichen
 
+**Vorweggenommene Teilaufgaben · 31.10.2026:** TypeScript, ESLint und Next-Produktionsbuild erneut durchgeführt; eine bekannte ESLint-Warnung im unveränderten Assetpack-Beispiel. OpenNext-/Wrangler-Konfiguration und frühere Veröffentlichung laut Kat vorhanden; kein aktueller Online-/Workers-Test in diesem Auftrag. Adapterwahl und frühere Runtime-Korrektur sind belegt, eine erneute aktuelle Kompatibilitätsrecherche nicht. Keine Aussage über ein fertig veröffentlichtes MVP.
+
+**Checkpoint offen:** Vier neue importierte WebP-Dateien sind noch ignoriert und nicht versioniert; Git-Umfang vor späterem Commit klären. Der Haken „Secrets und Git-Inhalte prüfen“ bleibt bis zum vollständigen Commit-Review offen.
+
 ## 🎯 ZIEL
 
 MUSS-Anforderungen tatsächlich testen, MVP möglichst unter einer Testadresse bereitstellen. **Bestehende `katcoded.de`-Domain, DNS und E-Mail nicht verändern.**
@@ -687,8 +697,8 @@ Nicht allein wegen eines erfolgreichen Builds alle FRs auf `Passed` setzen.
 
 ### 2 · Technische Qualitätsprüfung
 
-- [ ] TypeScript/Build prüfen.
-- [ ] ESLint ausführen.
+- [x] TypeScript/Build prüfen.
+- [x] ESLint ausführen.
 - [ ] Responsive Ansichten testen.
 - [ ] Formulare/Fehlerfälle prüfen.
 - [ ] Auth und Veröffentlichungsfilter prüfen.
@@ -722,7 +732,7 @@ Automatisierte Tests ergänzen manuelle Prüfung, ersetzen sie aber nicht vollst
 ### 3 · Deployment vorbereiten
 
 - [ ] Aktuelle Next.js-Unterstützung für Cloudflare Workers prüfen.
-- [ ] Geeigneten Adapter und Runtime-Einschränkungen klären.
+- [x] Geeigneten Adapter und Runtime-Einschränkungen klären.
 - [ ] Secrets für Zielumgebung konfigurieren.
 - [ ] Datenbankzugriff aus Workers prüfen.
 - [ ] Testadresse planen.
@@ -738,7 +748,7 @@ Ein lokal funktionierender Node-Code läuft nicht zwangsläufig unverändert in 
 
 ### 4 · Anwendung bereitstellen und testen
 
-- [ ] Deployment durchführen.
+- [x] Deployment durchführen.
 - [ ] Öffentliche Testadresse prüfen.
 - [ ] Login, CRUD und Veröffentlichung online testen.
 - [ ] Probleme beheben und erneut deployen.

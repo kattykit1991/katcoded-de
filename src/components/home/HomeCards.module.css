@@ -1,0 +1,38 @@
+/* Raster und Kartenfarben in derselben Reihenfolge wie in HomeCards.tsx. */
+.cards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.cards > :nth-child(1) {
+  --card-background: linear-gradient(180deg, var(--kat-pink), var(--kat-soft));
+}
+
+.cards > :nth-child(2) {
+  --card-background: linear-gradient(180deg, var(--kat-fresh), color-mix(in srgb, var(--kat-fresh) 45%, var(--kat-surface)));
+}
+
+.cards > :nth-child(3) {
+  --card-background: linear-gradient(180deg, var(--kat-lavender), color-mix(in srgb, var(--kat-lavender) 50%, var(--kat-surface)));
+}
+
+.cards > :nth-child(4) {
+  --card-background: linear-gradient(180deg, color-mix(in srgb, var(--kat-fresh) 55%, var(--kat-cream)), var(--kat-cream));
+}
+
+@media (min-width: 48rem) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  .cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
