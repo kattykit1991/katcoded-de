@@ -108,6 +108,10 @@ Without an explicit styling request, the agent should not automatically restyle 
 
 ## 📚 LEARNING & EXPLANATIONS
 
+### Tailwind CSS syntax
+
+Check the installed Tailwind version before styling. Use its current canonical syntax and follow Tailwind CSS IntelliSense `suggestCanonicalClasses` hints (currently Tailwind v4, e.g. `bg-(--kat-bg)` and `duration-140`). Check for duplicate or conflicting utilities; preserve the existing appearance and behavior when normalizing classes.
+
 Prefer:
 
 - clear code over clever code

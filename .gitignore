@@ -46,4 +46,24 @@ next-env.d.ts
 .dev.vars*
 
 
-/design-system/
+# Only runtime assets required by the website (including fonts and licenses).
+/design-system/**
+!/design-system/CUTE_COZY/
+!/design-system/CUTE_COZY/branding/
+!/design-system/CUTE_COZY/fonts/
+!/design-system/CUTE_COZY/icons/
+!/design-system/CUTE_COZY/branding/wordmark-light.svg
+!/design-system/CUTE_COZY/fonts/NunitoSans.ttf
+!/design-system/CUTE_COZY/fonts/OFL-NunitoSans.txt
+!/design-system/CUTE_COZY/fonts/OFL-Quicksand.txt
+!/design-system/CUTE_COZY/fonts/Quicksand.ttf
+!/design-system/CUTE_COZY/fonts/SOURCES.md
+!/design-system/CUTE_COZY/icons/code.svg
+!/design-system/CUTE_COZY/icons/file.svg
+!/design-system/CUTE_COZY/icons/folder.svg
+!/design-system/CUTE_COZY/icons/home.svg
+!/design-system/CUTE_COZY/icons/info.svg
+!/design-system/CUTE_COZY/tokens.css
+
+# Lokale Designreferenzen – gehören nicht ins Repository
+/references/
