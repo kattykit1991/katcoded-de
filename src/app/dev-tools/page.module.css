@@ -1,0 +1,139 @@
+.heroLayout {
+  composes: layout from "../projects/page.module.css";
+}
+
+.heroText {
+  min-width: 0;
+  max-width: 44rem;
+}
+
+.heroImage {
+  composes: image from "../projects/page.module.css";
+}
+
+.eyebrow {
+  composes: eyebrow from "../projects/page.module.css";
+}
+
+.hero {
+  max-width: 86rem;
+  margin: 2rem 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--kat-art-border);
+  border-radius: var(--kat-radius-card);
+  background: linear-gradient(120deg, var(--kat-soft), var(--kat-cream), var(--kat-lavender));
+  box-shadow: var(--kat-shadow-card);
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--kat-strong);
+  font-family: var(--kat-font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero p {
+  max-width: 44rem;
+  margin: 1rem 0 0;
+  color: var(--kat-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.section {
+  max-width: 90rem;
+  margin-inline: auto;
+  padding: 0 1.25rem 3rem;
+}
+
+.section h2 {
+  margin: 0 0 1.5rem;
+  color: var(--kat-strong);
+  font-family: var(--kat-font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.environmentCard {
+  position: relative;
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--kat-art-border);
+  border-radius: var(--kat-radius-card);
+  background: linear-gradient(145deg, var(--kat-surface), var(--kat-soft));
+  box-shadow: var(--kat-shadow-card);
+  overflow-wrap: anywhere;
+}
+
+.environmentCard:nth-child(2) {
+  background: linear-gradient(145deg, var(--kat-surface), var(--kat-lavender));
+}
+
+.environmentCard:nth-child(3) {
+  background: linear-gradient(145deg, var(--kat-surface), var(--kat-fresh));
+}
+
+.environmentCard h3 {
+  min-height: 4rem;
+  margin: 0 0 1rem;
+  padding-right: 5rem;
+  color: var(--kat-strong);
+  font-family: var(--kat-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.environmentCard p {
+  margin: 0;
+  color: var(--kat-text-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.environmentSticker {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 4rem;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 40rem) {
+  .hero {
+    margin-inline: 2rem;
+    padding: 2rem;
+  }
+
+  .section {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 52rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 80rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 90rem) {
+  .hero {
+    margin-inline: auto;
+  }
+}

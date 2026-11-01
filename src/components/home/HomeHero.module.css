@@ -1,0 +1,87 @@
+/* Der auslaufende Pastellhintergrund für #home besteht bereits in globals.css. */
+.hero {
+  color: var(--kat-text);
+}
+
+/* Gleiche Außenkanten wie beim Kartenraster; mobil zuerst untereinander. */
+.layout {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding: 2.5rem 1.25rem 2rem;
+}
+
+.text {
+  min-width: 0;
+  max-width: 36rem;
+}
+
+.badge {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--kat-primary) 40%, transparent);
+  border-radius: var(--kat-radius-pill);
+  background: color-mix(in srgb, var(--kat-surface) 60%, transparent);
+  color: var(--kat-strong);
+  font-family: var(--kat-font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.text h1 {
+  margin: 0;
+  color: var(--kat-strong);
+  font-family: var(--kat-font-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.text p {
+  margin: 1.5rem 0 0;
+  color: var(--kat-text-muted);
+  font-family: var(--kat-font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.image {
+  justify-self: center;
+  width: 100%;
+  max-width: 36rem;
+  min-width: 0;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 40rem) {
+  .layout {
+    padding: 3rem 2rem 2rem;
+  }
+
+  .badge {
+    font-size: 1rem;
+  }
+
+  .text p {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    padding-top: 2.5rem;
+  }
+
+  .image {
+    max-width: 40rem;
+  }
+}

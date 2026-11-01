@@ -1,160 +1,108 @@
-# 👻 katcoded.de
+# 👻 KATCODED.DE
 
-> My personal developer website — a home for my projects, my journey in software engineering, and the things I love to build.
+> My personal developer website — a home for my projects, my software engineering journey, and the things I love to build.
 
----
+## About
 
-## ✨ About
+KATCODED.DE is Kat's personal developer website and an ongoing learning project developed during software engineering training at **WBS CODING SCHOOL**.
 
-**katcoded.de** is my personal developer website and an ongoing software engineering project.
+Version **0.1.0** provides a public portfolio with five pages, a shared navigation and footer, and a light CUTE_COZY visual identity. The local presentation version is functionally largely complete as of **1 November 2026**, ahead of the presentation on **2 November 2026**. This describes the local working tree; it is not a claim that the latest version has been deployed or fully audited.
 
-The goal is to create a central place where I can introduce myself as a developer, showcase selected projects, and share what I'm building.
+## Pages and features
 
-Instead of maintaining a purely static portfolio, I'm developing a web application that combines a public-facing website with a private project management dashboard.
+| Route | Content |
+| --- | --- |
+| `/` | Personal introduction, coding-crew illustration, and four topic cards with category labels. |
+| `/projects` | Project gallery with category filters and interactive project details. |
+| `/about` | Four personal sections covering Kat's background, learning journey, tools, and creative interests, plus an illustration transparency note. |
+| `/dev-tools` | Personal developer tools and workflow resources, with an existing link to kat-create on GitHub. |
+| `/roadmap` | A read-only Kanban board with four status columns, compact task buttons, and a detail dialog. |
 
-The dashboard will allow me to manage project information and decide which projects are visible to visitors.
+- Project and roadmap details use native HTML `<dialog>` elements.
+- Project filters use React state and retain an accessible pressed state.
+- The roadmap keeps its columns side by side and scrolls horizontally inside the board when space is limited.
+- Responsive layouts, visible keyboard focus styles, and reduced-motion rules are present. Comprehensive accessibility conformance has not been established.
+- The shared header marks the active route; the footer includes GitHub, copyright, and a visible AI illustration disclosure.
+- The four subpage hero illustrations reuse exactly the same notebook, laptop, cat mug, and book-stack assets as the corresponding homepage cards.
+- The KC favicon with turquoise glasses is installed through the Next.js App Router favicon convention.
 
-### Planned MVP features
+Homepage categories are labels, not filter buttons or links. Public page navigation is provided by the header.
 
-- **Developer homepage** — A public introduction to me and my work.
-- **Project portfolio** — A public overview of selected development projects.
-- **Admin dashboard** — A private area protected by authentication.
-- **Project management** — Create, edit, and delete project entries.
-- **Persistent storage** — Store project information in a PostgreSQL database.
-- **Publishing controls** — Keep projects private as drafts or publish them on the website.
+## Data and architecture
 
-### Possible future additions
+The current website uses **static local data**:
 
-- Project tasks and progress tracking.
-- More detailed project presentations.
-- Additional portfolio features.
-- Community and interaction features.
+- `src/data/projects.ts` contains the project records, with their type in `src/types/project.ts`.
+- The server-rendered project page passes only records with `published: true` to the interactive gallery.
+- The roadmap's 13 task records are defined in `src/app/roadmap/page.tsx`. A small client-side board manages the selected task and opens its detail dialog.
+- Images and UI icons are imported through `src/lib/images.ts` and `src/lib/icons.ts`.
 
-These additions are not part of the initial MVP.
+There is **no private admin dashboard inside KATCODED.DE**. That part of the original plan has been replaced by a future integration with **KATUARY**, Kat's separate private application. KATUARY is intended to manage projects and roadmap tasks; KATCODED.DE should eventually display only explicitly approved public data.
 
-The first priority is a working, maintainable foundation.
+**No database connection, authentication, application API, editing interface, or KATUARY synchronization is implemented in v0.1.** The current publication flag is a static display filter, not a private-data storage or authorization system. Credentials and private records must never be added to the public source data.
 
----
+## Technology
 
-## 🛠️ Tech
+Verified against the installed packages and source on 1 November 2026:
 
-The following technologies are planned for the initial implementation:
+| Technology | Current use |
+| --- | --- |
+| Next.js 16.4.3 | App Router, server-rendered pages, image handling, and client component boundaries. |
+| React 19.3.0 | Components, gallery filters, and selected-item state for dialogs. |
+| TypeScript 5.9.3 | Typed component props and project data. |
+| CSS Modules | Main page and component styling. |
+| CUTE_COZY | Existing design tokens, local Quicksand/Nunito fonts, icons, and pixelart assets. |
+| Tailwind CSS 4.3.3 | Existing shared layout/navigation utilities and global CSS integration. |
+| ESLint | Static code checks. |
 
-| Technology         | Purpose                           |
-| ------------------ | --------------------------------- |
-| Next.js            | Full-stack web framework          |
-| TypeScript         | Type-safe application development |
-| Tailwind CSS       | Styling and responsive layouts    |
-| PostgreSQL         | Persistent project data           |
-| Neon               | Managed PostgreSQL database       |
-| Cloudflare Workers | Application deployment            |
+Tailwind is installed **and used**, rather than merely planned; most page styling lives in CSS Modules. Neon/PostgreSQL is not connected to the application.
 
-**Current implementation status:**
+OpenNext Cloudflare 1.20.14 and Wrangler 4.155.0 are installed, and Cloudflare Workers configuration and npm scripts exist. These are deployment tooling, not evidence that the latest working tree is running successfully online. No current Workers build, deployment, or live-site verification was performed for this documentation update.
 
-The project is in its preparation phase. The application framework has not been initialized yet.
+## Run locally
 
-The technologies listed above represent the selected development stack, not a completed implementation.
+The reviewed environment uses **Node.js 24.19.0** and **npm 12.1.0**. With project dependencies and the required local assets already available:
 
-The authentication solution has not yet been finalized.
+```bash
+npm run dev
+```
 
----
+Open `http://localhost:3000`. The local development site was viewed in Safari during the v0.1 implementation work.
 
-## 🚀 Run locally
+**Fresh-checkout limitation:** the current local working tree includes application files that are not yet committed and 60 imported design assets that are still ignored and unversioned. A clean checkout is not yet a verified, self-contained installation. Dependency installation and clean-checkout reproducibility have not been retested for this version.
 
-Local setup instructions will be added once the Next.js application has been initialized and the development environment has been verified.
+## Checks and build
 
-The planned development workflow will use npm and the Next.js development server.
+These commands were executed during the final implementation work:
 
-<!--
-KAT-NOTIZ 👻
+```bash
+./node_modules/.bin/tsc --noEmit --incremental false
+npm run lint
+npm run build
+```
 
-Diesen Abschnitt erst mit echten Installations- und Startbefehlen
-füllen, sobald das Next.js-Projekt eingerichtet und getestet wurde.
+- TypeScript passed.
+- ESLint completed with no errors and one existing `@next/next/no-img-element` warning in the design-system React example.
+- The latest production-build attempt was blocked by the execution environment: Turbopack could not bind a local port (`Operation not permitted`). A successful production build of the final working tree remains to be confirmed outside that restriction.
+- Focused Safari checks covered the four subpage heroes at desktop and mobile sizes and the new favicon. Earlier roadmap checks covered 320, 768, 1280, and 1440 px and dialog mouse/keyboard interactions. This is not a complete cross-browser or WCAG audit.
 
-Keine ungetesteten Befehle als funktionierende Anleitung ausgeben.
+The latest build attempt did not establish a successful production release. Internal follow-up items, including the nested homepage `<main>` landmark, are recorded in [PROJECT_STATE.md](dev-tools/PROJECT_STATE.md).
 
-Später ergänzen:
-- Voraussetzungen (z. B. passende Node.js-Version)
-- Repository klonen
-- Dependencies installieren
-- Benötigte Umgebungsvariablen dokumentieren
-- Entwicklungsserver starten
+## Illustrations and AI transparency
 
-WICHTIG:
-Keine echten Zugangsdaten oder Secrets in der README veröffentlichen.
--->
+The illustrations and pixelart used on this website have so far been created with generative AI. Kat develops the motifs, characters, and creative direction as part of her own creative world and intends to add more hand-drawn pixelart over time.
 
----
+A visible disclosure appears in the shared footer, with a fuller explanation on `/about`.
 
-## 📍 Status
+## Developer and project documentation
 
-**Status: Planning complete · Development not started**
+Built by **Kat**, the developer behind **KATCODED** — an aspiring software engineer who enjoys turning creative ideas into useful, personal software.
 
-The initial project scope, requirements, and development roadmap have been prepared.
+[GitHub profile](https://github.com/kattykit1991)
 
-The next milestone is setting up the Next.js application and establishing the foundation for the public website and private dashboard.
+- [Current project state](dev-tools/PROJECT_STATE.md)
+- [Requirements and scope decisions](dev-tools/PROJECT_REQUIREMENTS.md)
+- [Build guide and historical learning stages](dev-tools/PROJECT_BUILD_GUIDE.md)
+- [KAT · DEV TOOLS](dev-tools/DEV_TOOLS_README.md)
 
-This project is being developed as part of my software engineering training at **WBS CODING SCHOOL**.
-
-The initial version focuses on delivering a functional MVP. Additional features will be considered after the core functionality is implemented.
-
-<!--
-KAT-NOTIZ 👻
-
-Dieser Abschnitt ist für einen kurzen öffentlichen Projektstatus gedacht.
-
-Bei Entwicklungsbeginn beispielsweise aktualisieren zu:
-"In development"
-
-Nach Fertigstellung des MVP:
-"MVP complete"
-
-Detaillierter Fortschritt, aktuelle Aufgaben und technische Probleme
-gehören weiterhin in dev-tools/PROJECT_STATE.md.
--->
-
----
-
-## 👩‍💻 Developer
-
-Built by **Kat** — an aspiring software engineer and the developer behind **KATCODED**.
-
-I enjoy turning ideas into projects, learning new technologies, and building software that is both useful and personal.
-
-**KATCODED** is my developer identity and the creative home for my software projects.
-
-<!--
-Optional später ergänzen:
-- GitHub-Profil
-- Portfolio-Link
-- Live Demo
-- Kontaktmöglichkeiten
-
-Nur tatsächlich verfügbare und freigegebene Links veröffentlichen.
--->
-
----
-
-<!--
-KAT-REGELN FÜR PROJECT_README
-
-- Während der Planungs-/Vorbereitungsphase heißt diese Datei PROJECT_README.md.
-- Grund: Projektinitialisierungstools wie Vite oder Next.js können eine README.md
-  erzeugen bzw. mit einer vorhandenen README kollidieren.
-- Erst NACH der technischen Projektinitialisierung wird aus PROJECT_README.md
-  die finale README.md.
-- Vor dem Ersetzen einer vom Setup erzeugten README kurz prüfen, ob daraus
-  projektrelevante Setup-Informationen übernommen werden müssen.
-- Danach nur EINE finale README.md behalten.
-  Keine parallele PROJECT_README.md als zweite Wahrheit.
-- README ist für Außenstehende / öffentliche Projektinformationen.
-- Interner Fortschritt und Wiedereinstieg gehören in PROJECT_STATE.md.
-- Brainblerps und lose interne Notizen gehören in NOTES.md.
-- Die README darf mit dem Projekt mitwachsen, soll aber keine interne
-  Projektdokumentation duplizieren.
--->
-
----
-
-> 👻 Part of **KAT · DEV TOOLS** · katcoded.de  
-> See `DEV_TOOLS_README.md` for information about this toolkit.
+The public README is the project introduction. Internal progress and the next development step belong in `dev-tools/PROJECT_STATE.md`; local design references under `references/` are not part of the published repository.

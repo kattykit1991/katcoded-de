@@ -1,0 +1,54 @@
+/* Vier Spalten bleiben nebeneinander. Nur das Board scrollt bei Platzmangel. */
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(16.5rem, 1fr));
+  gap: 0.75rem;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: clamp(0.375rem, 1.5vw, 0.875rem);
+  padding: clamp(0.375rem, 1.5vw, 0.875rem);
+  border: 1px solid var(--kat-art-border);
+  border-radius: var(--kat-radius-card);
+  background: color-mix(in srgb, var(--kat-cream) 90%, var(--kat-lavender));
+  box-shadow: var(--kat-shadow-card);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+  padding: 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--kat-art-border) 60%, transparent);
+  border-radius: var(--kat-radius-control);
+  background: color-mix(in srgb, var(--kat-soft) 70%, var(--kat-surface));
+  overflow-wrap: anywhere;
+  scroll-snap-align: start;
+}
+
+.column:nth-child(2) {
+  background: color-mix(in srgb, var(--kat-lavender) 70%, var(--kat-surface));
+}
+
+.column:nth-child(3) {
+  background: color-mix(in srgb, var(--kat-fresh) 70%, var(--kat-surface));
+}
+
+.column:nth-child(4) {
+  background: var(--kat-cream);
+}
+
+.column h2 {
+  margin: 0 0 0.25rem;
+  padding: 0.25rem 0.25rem 1rem;
+  border-bottom: 1px solid var(--kat-art-border);
+  color: var(--kat-strong);
+  font-family: var(--kat-font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+

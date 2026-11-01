@@ -21,17 +21,21 @@ Falls eine Aufgabenstellung bereits Requirements oder IDs (z. B. FR001) vorgibt:
 
 ## 📌 REQUIREMENTS
 
-| ID    | Requirement                                                                                                                                                      | Implementation | Review       |
-| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------ |
-| FR001 | **[MUSS]** Die öffentliche Website zeigt meine Developer-Identität und ausgewählte Projekte.                                                                     | In Progress    | In Review    |
-| FR002 | **[MUSS]** Der Verwaltungsbereich ist durch eine Anmeldung vor unberechtigtem Zugriff geschützt.                                                                 | Open           | Not Reviewed |
-| FR003 | **[MUSS]** Im Dashboard können neue Projekte angelegt werden.                                                                                                    | Open           | Not Reviewed |
-| FR004 | **[MUSS]** Im Dashboard können bestehende Projektinformationen bearbeitet werden.                                                                                | Open           | Not Reviewed |
-| FR005 | **[MUSS]** Projektinformationen werden dauerhaft in einer Datenbank gespeichert und können erneut abgerufen werden.                                              | Open           | Not Reviewed |
-| FR006 | **[MUSS]** Für jedes Projekt kann festgelegt werden, ob es auf der öffentlichen Website sichtbar ist. Nicht freigegebene Projekte bleiben öffentlich unsichtbar. | Open           | Not Reviewed |
-| FR007 | **[MUSS]** Projekte können im Dashboard nach einer Bestätigung gelöscht werden.                                                                                  | Open           | Not Reviewed |
-| FR008 | **[OPTIONAL]** Innerhalb eines Projekts können Aufgaben angelegt und als erledigt markiert werden.                                                               | Open           | Not Reviewed |
-| FR009 | **[OPTIONAL]** Der Projektfortschritt wird anhand erledigter Aufgaben automatisch berechnet und als Fortschrittsbalken angezeigt.                                | Open           | Not Reviewed |
+**Gültigkeitsstand · 01.11.2026:** Die IDs und fachlichen Originalformulierungen bleiben zur Nachvollziehbarkeit erhalten. Die bisherigen `[MUSS]`-/`[OPTIONAL]`-Marker stammen aus der ursprünglichen Dashboard-Planung. Sie machen ersetzte Anforderungen nicht erneut zu v0.1-Pflichten.
+
+Kat hat den Scope ausdrücklich geändert: KATCODED.DE ist die öffentliche Leseansicht; private Projekt- und Roadmap-Verwaltung soll später die separate Anwendung **KATUARY** übernehmen. Keine Datenbank, Authentifizierung, API oder Synchronisierung in v0.1 implementiert. Keine konkrete spätere Technologie durch diesen Abgleich festgelegt.
+
+| ID | Ursprüngliche Anforderung | Heutige Gültigkeit / Entscheidung | Implementation | Review |
+| --- | --- | --- | --- | --- |
+| FR001 | **[MUSS]** Die öffentliche Website zeigt meine Developer-Identität und ausgewählte Projekte. | v0.1 | Done | Teilreview |
+| FR002 | **[MUSS]** Der Verwaltungsbereich ist durch eine Anmeldung vor unberechtigtem Zugriff geschützt. | Internes Dashboard verworfen; spätere KATUARY-Zuständigkeit | Nicht in v0.1 | Nicht implementiert |
+| FR003 | **[MUSS]** Im Dashboard können neue Projekte angelegt werden. | Ersetzt durch spätere KATUARY-Verwaltung | Nicht in v0.1 | Nicht implementiert |
+| FR004 | **[MUSS]** Im Dashboard können bestehende Projektinformationen bearbeitet werden. | Ersetzt durch spätere KATUARY-Verwaltung | Nicht in v0.1 | Nicht implementiert |
+| FR005 | **[MUSS]** Projektinformationen werden dauerhaft in einer Datenbank gespeichert und können erneut abgerufen werden. | Spätere Datenversorgung; konkrete Technik offen | Nicht in v0.1 | Keine DB-Anbindung |
+| FR006 | **[MUSS]** Für jedes Projekt kann festgelegt werden, ob es auf der öffentlichen Website sichtbar ist. Nicht freigegebene Projekte bleiben öffentlich unsichtbar. | v0.1: statischer Filter; später Freigabe über KATUARY | Teilweise | Code geprüft; Workflow offen |
+| FR007 | **[MUSS]** Projekte können im Dashboard nach einer Bestätigung gelöscht werden. | Ersetzt durch spätere KATUARY-Verwaltung | Nicht in v0.1 | Nicht implementiert |
+| FR008 | **[OPTIONAL]** Innerhalb eines Projekts können Aufgaben angelegt und als erledigt markiert werden. | Spätere Option; kein Website-Editor vorgesehen | Nicht in v0.1 | Nicht implementiert |
+| FR009 | **[OPTIONAL]** Der Projektfortschritt wird anhand erledigter Aufgaben automatisch berechnet und als Fortschrittsbalken angezeigt. | Spätere Option, noch nicht beauftragt | Nicht in v0.1 | Nicht implementiert |
 
 <!--
 VORGESCHLAGENE STATUSWERTE – im Pilot noch nicht endgültig standardisiert:
@@ -56,17 +60,27 @@ Andere Zwischenstände bei Bedarf klar benennen; keine künstlichen Häkchen set
 
 Kurze Notizen **nur dann ergänzen, wenn tatsächlich eine Prüfung stattgefunden hat**. Keine leeren Review-Protokolle für jede Anforderung nötig.
 
-### Abgleich · 31.10.2026
+### Abgleich · 01.11.2026
 
-**Erfüllungsstand:** Keine der vollständigen Anforderungen FR001–FR009 ist derzeit nachweislich vollständig erfüllt. `In Progress` bedeutet hier teilweise umgesetzt; `In Review` bei FR001 bezeichnet einen belegten Teilreview, keine Freigabe der Gesamtanforderung.
+- **FR001 — für v0.1 umgesetzt:** fünf öffentliche Seiten `/`, `/projects`, `/about`, `/dev-tools`, `/roadmap`; gemeinsame Navigation und Footer. Die Galerie zeigt drei ausgewählte Projekte, bietet Kategorienfilter und Projekt-Details; About, Dev Tools und Roadmap ergänzen die Developer-Identität. Code geprüft. Fokussierte Safari-Sichtprüfungen aus den vorangegangenen Aufträgen liegen vor; keine vollständige funktionale/Accessibility-Abnahme, deshalb kein pauschales `Passed`.
+- **FR002–FR004, FR007 — ursprüngliche Website-Admin-Architektur ersetzt:** kein Website-Login oder Dashboard gefordert bzw. implementiert. Spätere Verwaltungsabläufe sind in KATUARY zu planen; die ursprünglichen Sicherheits- und CRUD-Ziele sind nicht als erledigt markiert und keine automatisch freigegebenen KATUARY-Requirements.
+- **FR005 — später vorgesehen:** `src/data/projects.ts` enthält statische Daten, Roadmap-Aufgaben stehen in der Server-Seite. Keine Datenbankbibliothek/Verbindung im Anwendungscode. Die frühere Neon-Planung ist historisch, keine bestehende Integration.
+- **FR006 — teilweise erfüllt:** `Project.published` ist vorhanden; `src/app/projects/page.tsx` filtert auf dem Server, bevor Daten an `ProjectGallery` gehen. Alle drei vorhandenen Datensätze tragen aktuell `published: true`. Kein Test mit einem echten unveröffentlichten Datensatz und kein Laufzeit-Freigabe-/Zurücknahme-Workflow dokumentiert. Statische Daten werden im Quellcode gepflegt. Daten in einem öffentlichen Repository sind nicht privat, auch wenn ein UI-Filter sie ausblendet.
+- **FR008–FR009 — nicht für v0.1:** das Kanban-Board ist eine öffentliche statische Übersicht mit 13 Aufgaben und Details. Es ermöglicht weder Aufgabenbearbeitung noch Speicherung, Projektzuordnung mit CRUD oder automatische Fortschrittsberechnung. Die optionalen Wünsche bleiben spätere, bewusst zu priorisierende Ideen.
 
-- **FR001 — teilweise erfüllt:** `/` zeigt Kats kurze Developer-Begrüßung und vier Themenkarten. Karteninhalte in `HomeCards.tsx`, gemeinsame Struktur in `HomeCard.tsx`, WebP-Importe in `src/lib/images.ts`, Gestaltung in CSS Modules. Die Karte „Meine Projekte“ enthält noch keine ausgewählten Projekt-Datensätze oder konkrete Projektübersicht. Dieser fachliche Teil fehlt; daher weder `Done` noch `Passed`.
-- **Teilprüfung FR001:** Code geprüft; TypeScript, ESLint (eine bekannte Assetpack-Warnung) und Produktionsbuild erfolgreich. Im vorangegangenen Korrekturlauf waren vier gestaltete Karten in Safari sichtbar, CSS-Module-Klassen und Bildbegrenzung nachgewiesen. Keine vollständige Responsive-/Accessibility-Prüfung oder aktuelle Online-Prüfung; keine vollständige WCAG-Konformität belegt.
-- **FR002–FR007 — offen:** Im aktuellen `src/` fehlen Admin-/Login-/Dashboard-Routen, Persistenz, CRUD-Funktionen und Veröffentlichungssteuerung. Codebestand geprüft; mangels Umsetzung keine positiven Funktionstests. Die Review-Spalte bleibt `Not Reviewed` für die späteren Verhaltensprüfungen.
-- **FR008–FR009 — offen, optional:** Keine Projektaufgaben, Statusspeicherung, Fortschrittsberechnung oder Fortschrittsanzeige implementiert.
+### Zusätzlicher tatsächlich vorhandener v0.1-Umfang
 
-Die fachlichen Formulierungen bleiben unverändert. Gestaltete Themenkarten erfüllen weder Projektverwaltung noch Veröffentlichungsfilter. Bekannte Navigations- und Semantikprobleme sowie der Git-Blocker für die vier neuen Bilder stehen in `PROJECT_STATE.md`; sie werden in diesem Dokumentationsauftrag nicht durch Codeänderungen gelöst.
+Projekt- und Roadmap-Detaildialoge sind interaktiv; Roadmap-Spalten scrollen innerhalb eines gemeinsamen Boards horizontal. CSS Modules verwenden CUTE_COZY-Tokens, lokale Fonts und bestehende Assets. Hero-Accessoires stimmen mit den vier Homepage-Karten überein. Der Footer und die About-Seite enthalten sichtbare KI-Transparenzhinweise; KC-Favicon vorhanden. Dies dokumentiert vorhandene Umsetzung und erfindet keine neuen Anforderungen oder IDs.
 
+### Prüfnachweise und offene Abnahme
+
+- Letzter TypeScript- und ESLint-Lauf am 01.11.2026 im finalen Asset-Auftrag erfolgreich; bekannte Warnung im unveränderten Designsystem-Beispiel. Im reinen Dokumentationsauftrag nicht erneut ausgeführt.
+- Der letzte Produktionsbuild der finalen v0.1 scheiterte am umgebungsbedingt gesperrten Port-Binding von Turbopack. Der erfolgreiche Build des damaligen Homepage-Stands vom 31.10. ist nur historischer Nachweis.
+- Safari-Prüfungen waren gezielt auf Seiten, Header-/Footer-/Hero-Darstellung, Roadmap-Dialoginteraktionen und Favicon begrenzt. Vollständige Filter-/Dialog-Testmatrix, Screenreader, Textzoom, physischer Touch und WCAG-2.2-AA-Abnahme bleiben offen.
+- Aktueller Git-/Asset-Checkpoint ist unvollständig: 60 importierte Designassets noch ignoriert/unversioniert; lokal keine fehlenden geprüften Asset-Dateien. Auf `/` bestehen verschachtelte `<main>`-Landmarks. Details und nächste Schritte in `PROJECT_STATE.md`.
+- Keine aktuelle Online-/Cloudflare-Prüfung oder Kursabnahme dieses geänderten Scopes behauptet.
+
+**Historischer Abgleich vom 31.10.:** Damals waren nur Homepage-Karten vorhanden; Projektübersicht und echte Routennavigation fehlten. Dieser Implementierungsbefund ist überholt. Der frühere Vier-WebP-Checkpoint wurde später als `680e2fa` abgeschlossen; inzwischen sind zusätzliche Assets hinzugekommen. Die Original-IDs bleiben erhalten, aber die damalige Aussage „alle FRs offen“ beschreibt nicht mehr den heutigen öffentlichen v0.1-Scope.
 
 <!--
 BEISPIELSTRUKTUR (kein echtes Review-Ergebnis):

@@ -1,0 +1,73 @@
+/* Kompakter Seitenauftakt, innerhalb derselben Außenkanten wie die Galerie. */
+.hero {
+  max-width: 86rem;
+  margin: 2rem 1.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--kat-art-border);
+  border-radius: var(--kat-radius-card);
+  background: linear-gradient(120deg, var(--kat-soft), var(--kat-cream), var(--kat-lavender));
+  box-shadow: var(--kat-shadow-card);
+}
+
+.layout {
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.text {
+  min-width: 0;
+  max-width: 44rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  color: var(--kat-strong);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.text h1 {
+  margin: 0;
+  color: var(--kat-strong);
+  font-family: var(--kat-font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.text p {
+  margin: 1rem 0 0;
+  color: var(--kat-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.image {
+  justify-self: center;
+  width: 100%;
+  max-width: 11.25rem;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 40rem) {
+  .hero {
+    margin-inline: 2rem;
+    padding: 2rem;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 11.25rem);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 90rem) {
+  .hero {
+    margin-inline: auto;
+  }
+}

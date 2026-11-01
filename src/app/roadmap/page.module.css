@@ -1,0 +1,61 @@
+.heroLayout {
+  composes: layout from "../projects/page.module.css";
+}
+
+.heroText {
+  min-width: 0;
+  max-width: 44rem;
+}
+
+.heroImage {
+  composes: image from "../projects/page.module.css";
+}
+
+.eyebrow {
+  composes: eyebrow from "../projects/page.module.css";
+}
+
+.page {
+  min-width: 0;
+  max-width: 100%;
+  width: 90rem;
+  margin-inline: auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.hero {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid var(--kat-art-border);
+  border-radius: var(--kat-radius-card);
+  background: linear-gradient(120deg, var(--kat-soft), var(--kat-cream), var(--kat-lavender));
+  box-shadow: var(--kat-shadow-card);
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--kat-strong);
+  font-family: var(--kat-font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero p {
+  max-width: 44rem;
+  margin: 1rem 0 0;
+  color: var(--kat-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+@media (min-width: 40rem) {
+  .page {
+    padding-inline: 2rem;
+  }
+
+  .hero {
+    padding: 2rem;
+  }
+}
+

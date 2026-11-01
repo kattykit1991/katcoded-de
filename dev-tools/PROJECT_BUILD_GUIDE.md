@@ -5,9 +5,12 @@
 
 **Projekt:** katcoded.de · v0.1  
 **Ordner:** `01_katcoded-de-v01`  
-**Stack:** Next.js App Router · React · TypeScript · Tailwind CSS · Neon PostgreSQL · Cloudflare Workers  
-**Mein Ziel:** Öffentliche Developer-Website + geschütztes Projekt-Dashboard für meine Projekte.  
-**Stand:** 31.10.2026 · Stage 01 technisch abgeschlossen; Stage 02 in Arbeit. Einzelne technische Prüfungen und eine frühere Cloudflare-Bereitstellung sind bereits erfolgt; das MVP ist noch nicht fertig.
+
+**Aktueller Stack:** Next.js App Router · React · TypeScript · CSS Modules · CUTE_COZY · Tailwind-Utilities im gemeinsamen Rahmen. OpenNext/Cloudflare-Tooling vorhanden; keine Datenbankanbindung.
+
+**Mein Ziel:** Öffentliche Developer-Website v0.1; spätere private Projekt-/Roadmap-Verwaltung in der separaten Anwendung KATUARY, kein Website-Dashboard.
+
+**Stand:** 01.11.2026 · fünf öffentliche Seiten lokal umgesetzt; Präsentation am 02.11.2026. Finale Build-, Git-/Asset- und Accessibility-Nachweise noch offen. Keine vollständige Release-Abnahme.
 
 **KAT-NOTIZ 👻** Das ist mein Bauplan, kein Pflichtenheft aus Stein. Wenn ich beim Entwickeln einen besseren Weg finde, dokumentiere ich die Entscheidung und passe die Route an. Das MVP bleibt trotzdem bewusst klein.
 
@@ -17,7 +20,19 @@
 
 ## 🧭 BUILD ROUTE
 
-### 🌱 MVP · zuerst das Fundament
+### Gültigkeit nach der Scope-Entscheidung vom 01.11.2026
+
+- **Stage 01:** technische Grundlage vorhanden; Verständnis-Lernziele nur durch Kat bestätigen.
+- **Stage 02:** öffentliche Implementierung der fünf Seiten vorhanden. Dashboard-Platzhalter entfällt ausdrücklich. Layout-/Accessibility-Abnahme noch nicht umfassend abgeschlossen.
+- **Stage 03–05:** ursprüngliche Datenbank-/Website-Admin-/CRUD-Route durch separate spätere KATUARY-Verwaltung ersetzt. Die Abschnitte und Lernbausteine bleiben historisch erhalten; offene Kästchen sind keine v0.1-To-dos und keine KATUARY-Implementierungsfreigabe.
+- **Stage 06:** statischer `published`-Filter vorhanden; ein dynamischer Freigabeworkflow und private Datenhaltung bleiben später zu planen.
+- **Stage 07:** aktuelle Route zum technischen Abschluss: finalen Build prüfen, Git-/Asset-Vollständigkeit herstellen lassen, Semantik und gezielte Tests abschließen. Kein automatischer Commit/Push/Deployment.
+- **Stage 08:** frühere Bonusidee, kein Bestandteil von v0.1.
+
+**Leseregel:** `[x]` = belegter Teilabschluss; `[ ]` = offen im jeweils angegebenen Scope; `[-]` = durch die Architekturentscheidung entfallen, ausdrücklich nicht implementiert. Historische Stages nicht als neue Arbeitsanweisung lesen. Requirements behalten ihre ursprünglichen IDs, aber heutige Gültigkeit steht in `PROJECT_REQUIREMENTS.md`.
+
+
+### 🌱 Ursprüngliche Route · heutige Gültigkeit siehe oben
 
 - [STAGE 01 · Projektgrundlage schaffen](#stage-01--projektgrundlage-schaffen)
 - [STAGE 02 · Öffentliche Website aufbauen](#stage-02--öffentliche-website-aufbauen)
@@ -27,7 +42,7 @@
 - [STAGE 06 · Sichtbarkeit steuern](#stage-06--sichtbarkeit-steuern)
 - [STAGE 07 · Testen und veröffentlichen](#stage-07--testen-und-veröffentlichen)
 
-### 🌸 Bonus-Level · nur wenn das MVP steht
+### 🌸 Historischer Bonus-Level · außerhalb v0.1
 
 - [STAGE 08 · Aufgaben und Fortschritt (Bonus)](#stage-08--aufgaben-und-fortschritt-bonus)
 
@@ -37,7 +52,7 @@
 
 # STAGE 01 · Projektgrundlage schaffen
 
-**Nachweis · 31.10.2026:** Grundgerüst, DEV TOOLS, Git und lokale Laufzeit vorhanden; TypeScript und Produktionsbuild erfolgreich, ESLint ohne Fehler. Frühere Setup-/Buildbeschränkungen sind überholt. Offene Verständnis-Lernziele bleiben bis zu Kats Bestätigung offen; der damalige Initialisierungsweg wird nicht allein aus dem heutigen Code rekonstruiert.
+**Historischer Nachweis · 31.10.2026:** Grundgerüst, DEV TOOLS, Git und lokale Laufzeit vorhanden; TypeScript und Produktionsbuild des damaligen Homepage-Stands erfolgreich, ESLint ohne Fehler. **Aktueller Abgleich · 01.11.:** Framework und Setup bestehen weiter; der finale Produktionsbuild ist inzwischen durch das gesperrte lokale Turbopack-Port-Binding blockiert (Stage 07). Offene Verständnis-Lernziele bleiben bis zu Kats Bestätigung offen; der damalige Initialisierungsweg wird nicht aus dem heutigen Code rekonstruiert.
 
 ## 🎯 ZIEL
 
@@ -154,13 +169,15 @@ git status           # zeigt lokale Änderungen
 
 # STAGE 02 · Öffentliche Website aufbauen
 
-**Teilstand · 31.10.2026:** Homepage-Grundgerüst und vier CUTE_COZY-Themenkarten umgesetzt. `page.tsx` setzt `HomeHero` und `HomeCards` zusammen; `HomeCard` rendert die gemeinsame Struktur, `src/lib/images.ts` verwaltet Bilder, zwei CSS Modules die Kartengestaltung. Tokens sind über `layout.tsx` eingebunden. Native CSS-Module-Verarbeitung ist nach gezieltem Ausschluss aus der globalen Turbopack-CSS-Regel wiederhergestellt.
+**Implementierungsstand · 01.11.2026:** Homepage, Projektgalerie, About, Dev Tools und Roadmap sind lokal umgesetzt. Gemeinsame `SiteHeader`-/`SiteNavigation`-/`SiteFooter`-Komponenten und echte Next.js-Routen ersetzen die früheren unvollständigen Sprungmarken. Galerie mit statischen Projektdaten/Filtern/Detaildialog, About mit vier Abschnitten plus KI-Hinweis, Dev Tools mit Karten, Roadmap mit 13 statischen Aufgaben und Detail-Blerp. CSS Modules, CUTE_COZY-Tokens, lokale Fonts, gemeinsame Hero-Styles und KC-Favicon sind eingebunden.
 
-Das responsive Grundlayout ist vorhanden (Karten: 1/2/4 Spalten, 48rem/80rem). Safari-Sichtprüfung mit zwei Spalten sowie Klassen und Bildbegrenzung bestanden; die vollständige Breiten-/Zoom-/Accessibility-Matrix steht aus. Die Vorbereitung eines Developer-Bereichs ist durch die kurze Begrüßung belegt, keine vollständige Über-mich-Seite. Eine Themenkarte ist noch keine Übersicht ausgewählter Projekte. Navigationseinträge existieren, ihre fünf Abschnitts-IDs fehlen jedoch. Dashboard-Platzhalter fehlt. Deshalb bleiben die vollständigen Abschlusskriterien offen.
+**Behobener früherer Fehler:** CSS Modules sind in `next.config.ts` von der globalen Turbopack-CSS-Loader-Regel ausgenommen; dadurch funktionieren ihre Klassenexports. Dieser technische Teilabschluss bleibt bestehen. Der aktuelle Build-Umgebungsfehler hat eine andere Ursache.
+
+**Prüfgrenze:** gezielte Safari-Prüfungen vorhanden, kein vollständiger Responsive-/Zoom-/Accessibility-Nachweis. Homepage hat noch ein zusätzliches `<main>` im Root-`<main>`. Die vier Homepage-Karten sind Themenbereiche mit Labels, keine eigenen Linkkarten. Die öffentliche Implementierung ist vorhanden; eine vollständige technische Abnahme bleibt offen.
 
 ## 🎯 ZIEL
 
-Die öffentliche Website bekommt ihre ersten Seiten und eine Navigation. Für das spätere Dashboard entsteht zunächst nur ein ungefährlicher Platzhalter – ohne private Daten oder Schreibfunktionen.
+Die fünf öffentlichen Seiten bilden die v0.1. **Kein Dashboard-Platzhalter mehr vorgesehen**: private Verwaltung soll später KATUARY übernehmen. Die ursprüngliche Teilaufgabe 2 bleibt unten ausschließlich historisch nachvollziehbar.
 
 ## 🔨 BAUEN
 
@@ -168,8 +185,8 @@ Die öffentliche Website bekommt ihre ersten Seiten und eine Navigation. Für da
 
 - [x] Startseite vorbereiten.
 - [x] Bereich zur Developer-Identität vorsehen.
-- [ ] Projektübersicht vorbereiten.
-- [ ] Navigation zwischen öffentlichen Seiten bauen.
+- [x] Projektübersicht vorbereiten.
+- [x] Navigation zwischen öffentlichen Seiten bauen.
 
 #### 🧱 DAFÜR BRAUCHST DU · Routen
 
@@ -191,7 +208,7 @@ export default function ExamplePage() {
 }
 ```
 
-Jede `page.tsx` exportiert eine React-Komponente als Standardexport.
+Jede `page.tsx` exportiert eine React-Komponente als Standardexport. **Im tatsächlichen Projekt enthält das Root-Layout bereits `<main>`; das generische Seitenbeispiel ist nicht als zweites verschachteltes `<main>` zu kopieren.** Die vorhandene Homepage-Verschachtelung ist als Nacharbeit im State dokumentiert.
 
 #### 🧱 DAFÜR BRAUCHST DU · Navigation
 
@@ -205,10 +222,12 @@ import Link from "next/link";
 
 ### 2 · Dashboard-Struktur vorbereiten
 
-- [ ] Route für Administration vorsehen.
-- [ ] Leere Dashboard-Startansicht vorbereiten.
-- [ ] Platz für Projektliste/Formulare planen.
-- [ ] Navigation öffentlich/admin unterscheiden.
+> **Historisch / am 01.11.2026 ersetzt:** Nicht mehr für KATCODED.DE vorgesehen. Keine Route oder Platzhalter erstellen; spätere private Verwaltung in KATUARY. Der folgende Lernbaustein bleibt als ursprüngliche Planung erhalten.
+
+- [-] ~~Route für Administration vorsehen.~~ Entfallen: private Verwaltung später in KATUARY.
+- [-] ~~Leere Dashboard-Startansicht vorbereiten.~~ Entfallen: private Verwaltung später in KATUARY.
+- [-] ~~Platz für Projektliste/Formulare planen.~~ Entfallen: private Verwaltung später in KATUARY.
+- [-] ~~Navigation öffentlich/admin unterscheiden.~~ Entfallen: private Verwaltung später in KATUARY.
 
 #### 🧱 DAFÜR BRAUCHST DU · Verschachtelte Layouts
 
@@ -254,14 +273,16 @@ src/app/
 
 ## ✅ FERTIG, WENN
 
-- [ ] Startseite und Projektübersicht erreichbar sind.
-- [ ] Dashboard-Platzhalter existiert.
-- [ ] Navigation funktioniert.
-- [ ] Layout auf schmalen und breiten Displays nutzbar ist.
+- [x] Startseite und Projektübersicht erreichbar sind.
+- [-] ~~Dashboard-Platzhalter existiert.~~ Entfallen: private Verwaltung später in KATUARY.
+- [x] Navigation funktioniert (fünf vorhandene Routen; `aria-current` im Code).
+- [ ] Layout auf schmalen und breiten Displays vollständig abgenommen ist; gezielte Safari-Prüfungen vorhanden.
 
 ---
 
 # STAGE 03 · Projektdaten dauerhaft speichern
+
+> **Historischer Lernabschnitt · nicht v0.1:** Die ursprüngliche Website-Datenbank-/Admin-/CRUD-Architektur wurde am 01.11.2026 ersetzt. Keine dieser Implementierungen ist vorhanden oder jetzt freigegeben. KATUARY bleibt das separate spätere Verwaltungsprojekt; dessen Technik und Sicherheitskonzept sind noch zu entscheiden. Lernbeispiele und offene Kästchen bleiben zur Nachvollziehbarkeit erhalten.
 
 ## 🎯 ZIEL
 
@@ -362,6 +383,8 @@ async function readExample() {
 
 # STAGE 04 · Admin-Bereich absichern
 
+> **Historischer Lernabschnitt · nicht v0.1:** Die ursprüngliche Website-Datenbank-/Admin-/CRUD-Architektur wurde am 01.11.2026 ersetzt. Keine dieser Implementierungen ist vorhanden oder jetzt freigegeben. KATUARY bleibt das separate spätere Verwaltungsprojekt; dessen Technik und Sicherheitskonzept sind noch zu entscheiden. Lernbeispiele und offene Kästchen bleiben zur Nachvollziehbarkeit erhalten.
+
 ## 🎯 ZIEL
 
 Nur berechtigte Personen dürfen Adminseiten und Schreibaktionen verwenden. **Authentifizierungslösung noch auswählen**; keine selbst erfundene Passwortverwaltung.
@@ -445,6 +468,8 @@ Auch Server Actions und Route Handler sind erreichbare Server-Endpunkte: Auth-Pr
 ---
 
 # STAGE 05 · Projekte verwalten
+
+> **Historischer Lernabschnitt · nicht v0.1:** Die ursprüngliche Website-Datenbank-/Admin-/CRUD-Architektur wurde am 01.11.2026 ersetzt. Keine dieser Implementierungen ist vorhanden oder jetzt freigegeben. KATUARY bleibt das separate spätere Verwaltungsprojekt; dessen Technik und Sicherheitskonzept sind noch zu entscheiden. Lernbeispiele und offene Kästchen bleiben zur Nachvollziehbarkeit erhalten.
 
 ## 🎯 ZIEL
 
@@ -595,6 +620,8 @@ Eine Bestätigungsdialogbox schützt vor Versehen, **nicht** vor unbefugten Anfr
 
 # STAGE 06 · Sichtbarkeit steuern
 
+**Teilstand · 01.11.2026:** `Project.published` und ein serverseitiger Filter vor Übergabe an die Galerie sind implementiert. Alle drei aktuellen Datensätze sind veröffentlicht; ein vollständiger Veröffentlichen-/Zurücknehmen-Test ist nicht dokumentiert. Kein Dashboard und keine Datenbank. Der unten beschriebene dynamische Verwaltungsablauf ist historische Planung bzw. später mit KATUARY neu zu planen; er ist keine v0.1-Pflicht.
+
 ## 🎯 ZIEL
 
 Nur ausdrücklich freigegebene Projekte erscheinen öffentlich. Standardmäßig bleibt ein neues Projekt **unveröffentlicht**.
@@ -619,9 +646,9 @@ const example = { title: "Beispiel", isPublished: false };
 ### 2 · Öffentliche Projektübersicht anbinden
 
 - [ ] Veröffentlichte Projekte serverseitig laden.
-- [ ] Nur freigegebene Datensätze anzeigen.
-- [ ] Karten/Liste darstellen.
-- [ ] Leerzustand anzeigen.
+- [x] Nur freigegebene Datensätze an die Galerie übergeben (`published`-Filter auf der Server-Seite; kein vollständiger Datenschutz-/Workflowtest).
+- [x] Karten/Liste darstellen (Projektgalerie).
+- [x] Leerzustand anzeigen (in `ProjectGallery` implementiert; Verhalten noch gezielt prüfen).
 
 #### 🧱 DAFÜR BRAUCHST DU · Datenbankfilter
 
@@ -669,22 +696,22 @@ Auch direkte URLs und mögliche API-Routen prüfen. Bei gecachten Seiten sichers
 
 # STAGE 07 · Testen und veröffentlichen
 
-**Vorweggenommene Teilaufgaben · 31.10.2026:** TypeScript, ESLint und Next-Produktionsbuild erneut durchgeführt; eine bekannte ESLint-Warnung im unveränderten Assetpack-Beispiel. OpenNext-/Wrangler-Konfiguration und frühere Veröffentlichung laut Kat vorhanden; kein aktueller Online-/Workers-Test in diesem Auftrag. Adapterwahl und frühere Runtime-Korrektur sind belegt, eine erneute aktuelle Kompatibilitätsrecherche nicht. Keine Aussage über ein fertig veröffentlichtes MVP.
+**Prüfstand · 01.11.2026:** TypeScript und ESLint im unmittelbar vorangegangenen finalen Asset-Auftrag erfolgreich; eine bekannte `no-img-element`-Warnung im unveränderten Designsystem-Beispiel. Der letzte Next-Produktionsbuild scheitert umgebungsbedingt am lokalen Port-Binding von Turbopack (`Operation not permitted`). Der erfolgreiche Build vom 31.10. betraf nur den damaligen Homepage-Stand. Kein aktueller OpenNext-Build oder Online-/Workers-Test. Frühere Veröffentlichung laut Kat ist historisch, keine Freigabe des finalen Arbeitsstands.
 
-**Checkpoint offen:** Vier neue importierte WebP-Dateien sind noch ignoriert und nicht versioniert; Git-Umfang vor späterem Commit klären. Der Haken „Secrets und Git-Inhalte prüfen“ bleibt bis zum vollständigen Commit-Review offen.
+**Checkpoint offen:** Die vier ursprünglichen Homepage-WebPs sind bereits in `680e2fa` versioniert. Inzwischen sind 60 weitere importierte Registry-Assets (15 WebP, 45 SVG) ignoriert/unversioniert; spätere Source-Dateien sind ebenfalls noch nicht vollständig committed. Vollständigen Stand gezielt prüfen, keine pauschalen Assetverzeichnisse hinzufügen. Dieser Dokumentationsauftrag verändert weder Ignore-Regeln noch Git-Index.
 
 ## 🎯 ZIEL
 
-MUSS-Anforderungen tatsächlich testen, MVP möglichst unter einer Testadresse bereitstellen. **Bestehende `katcoded.de`-Domain, DNS und E-Mail nicht verändern.**
+Den aktuellen öffentlichen v0.1-Scope prüfen und für die Präsentation am 02.11.2026 nachvollziehbar dokumentieren. **Keine Admin-/CRUD-/DB-Prüfung für eine nicht implementierte Website-Verwaltung verlangen.** Keine neue Änderung an bestehender Domain, DNS oder E-Mail. Deployment nur nach separater Freigabe.
 
 ## 🔨 BAUEN
 
 ### 1 · Anforderungen überprüfen
 
-- [ ] FR001–FR007 einzeln prüfen.
-- [ ] Tatsächliche Ergebnisse dokumentieren.
+- [ ] Für v0.1 gültige Anforderungen FR001 und den statischen Teil von FR006 vollständig prüfen; FR002–FR005/FR007 gemäß dokumentierter Scope-Entscheidung einordnen.
+- [x] Tatsächliche Ergebnisse und Prüflücken dokumentieren (01.11.2026).
 - [ ] Fehler korrigieren und erneut testen.
-- [ ] Implementation/Review getrennt aktualisieren.
+- [x] Implementation/Review und heutige Gültigkeit getrennt aktualisieren (01.11.2026).
 
 #### 🧱 DAFÜR BRAUCHST DU · Statusunterschied
 
@@ -697,11 +724,12 @@ Nicht allein wegen eines erfolgreichen Builds alle FRs auf `Passed` setzen.
 
 ### 2 · Technische Qualitätsprüfung
 
-- [x] TypeScript/Build prüfen.
+- [x] TypeScript prüfen (letzter erfolgreicher Lauf 01.11.2026).
+- [ ] Produktionsbuild des finalen Stands erfolgreich bestätigen; aktueller Versuch umgebungsbedingt blockiert.
 - [x] ESLint ausführen.
-- [ ] Responsive Ansichten testen.
-- [ ] Formulare/Fehlerfälle prüfen.
-- [ ] Auth und Veröffentlichungsfilter prüfen.
+- [ ] Responsive Ansichten vollständig abnehmen; gezielte Safari-Prüfungen vorhanden, Textzoom/Cross-Browser noch offen.
+- [ ] Vorhandene Filter, Leerzustände und Dialog-Fehlerfälle gezielt prüfen; keine Eingabe-/Adminformulare in v0.1.
+- [ ] Statischen Veröffentlichungsfilter gezielt prüfen. Auth gehört nicht zu v0.1.
 - [ ] Secrets und Git-Inhalte prüfen.
 
 #### 🧱 DAFÜR BRAUCHST DU · Prüfkommandos
@@ -731,6 +759,8 @@ Automatisierte Tests ergänzen manuelle Prüfung, ersetzen sie aber nicht vollst
 
 ### 3 · Deployment vorbereiten
 
+> Vorhanden sind `open-next.config.ts`, `wrangler.jsonc` und npm-Skripte, Workername/Self-Reference `katcoded-de`. Aktuellen Workers-Build und Laufzeit separat prüfen. Die folgenden ursprünglichen DB-/Secret-Aufgaben gelten nur bei einem später tatsächlich beschlossenen Bedarf; v0.1 benötigt keine DB-/Auth-Zugangsdaten.
+
 - [ ] Aktuelle Next.js-Unterstützung für Cloudflare Workers prüfen.
 - [x] Geeigneten Adapter und Runtime-Einschränkungen klären.
 - [ ] Secrets für Zielumgebung konfigurieren.
@@ -748,9 +778,9 @@ Ein lokal funktionierender Node-Code läuft nicht zwangsläufig unverändert in 
 
 ### 4 · Anwendung bereitstellen und testen
 
-- [x] Deployment durchführen.
+- [x] Früheres Deployment laut Kat erfolgt (historisch; nicht der finale aktuelle Stand).
 - [ ] Öffentliche Testadresse prüfen.
-- [ ] Login, CRUD und Veröffentlichung online testen.
+- [ ] Fünf öffentliche Seiten, Filter, Dialoge, Bilder und Favicon online testen; Login/CRUD entfallen für v0.1.
 - [ ] Probleme beheben und erneut deployen.
 
 #### 🧱 DAFÜR BRAUCHST DU · Deployment-Check
@@ -768,10 +798,10 @@ Keine echten Zugangsdaten in Logs oder Screenshots posten. DNS-Umschaltung der b
 
 ### 5 · Projektstand dokumentieren
 
-- [ ] `PROJECT_STATE.md` aktualisieren.
-- [ ] Offene Probleme notieren.
-- [ ] `PROJECT_REQUIREMENTS.md` anhand echter Tests aktualisieren.
-- [ ] README bei Bedarf aktualisieren.
+- [x] `PROJECT_STATE.md` aktualisieren. (Dokumentationsabgleich 01.11.2026.)
+- [x] Offene Probleme notieren. (Dokumentationsabgleich 01.11.2026.)
+- [x] `PROJECT_REQUIREMENTS.md` anhand von Code, Scope-Entscheidung und belegtem Prüfstand aktualisieren; Prüflücken ausdrücklich offen lassen.
+- [x] README bei Bedarf aktualisieren. (Dokumentationsabgleich 01.11.2026.)
 
 #### 🧱 DAFÜR BRAUCHST DU · Wiedereinstieg in drei Zeilen
 
@@ -785,17 +815,17 @@ Das ist nur ein **Beispiel**, kein tatsächlicher Projektstand.
 
 ## ✅ FERTIG, WENN
 
-- [ ] Alle MUSS-FRs implementiert und geprüft sind.
+- [ ] Alle für v0.1 weiterhin gültigen Anforderungen implementiert und geprüft sind; historische MUSS-Marker nicht als aktuelle Pflichten lesen.
 - [ ] Keine kritischen Fehler offen sind.
 - [ ] Lokal alles funktioniert.
 - [ ] Online-Test erfolgt ist **oder** Deployment-Blocker dokumentiert ist.
-- [ ] Projektstand nachvollziehbar ist.
+- [x] Projektstand nachvollziehbar dokumentiert ist (01.11.2026).
 
 ---
 
 # STAGE 08 · Aufgaben und Fortschritt (Bonus)
 
-> 🌸 **OPTIONAL – NICHT für den MVP erforderlich.** Erst anfangen, wenn FR001–FR007 zuverlässig funktionieren und Zeit bleibt.
+> 🌸 **Historische Bonusidee – nicht für v0.1 erforderlich oder umgesetzt.** Die alte Voraussetzung „erst FR001–FR007“ ist durch die Scope-Entscheidung ersetzt. Aufgabenbearbeitung und automatische Fortschrittsbalken nicht mit dem vorhandenen statischen Roadmap-Board verwechseln. Spätere Priorisierung mit Kat; keine Implementierungsfreigabe.
 
 ## 🎯 ZIEL
 
@@ -904,7 +934,7 @@ Das native `<progress>`-Element transportiert die Bedeutung „Fortschritt“; d
 - **Jeder Arbeitsschritt hat einen passenden 🧱 Lernbaustein** – Terminal, Konzept, Code, SQL oder Testbeispiel.
 - **CODE-BAUSTEINE sind generische Lernmuster, keine fertigen Lösungen für das aktuelle Projekt.** Platzhalter und Pseudocode sind ausdrücklich gekennzeichnet.
 - Der Guide ist eine Route, kein Vertrag. Bei neuen Erkenntnissen anpassen.
-- MUSS-Anforderungen vor OPTIONAL. Stage 08 darf entfallen.
+- Aktuell gültige v0.1-Anforderungen vor späteren Optionen; ursprüngliche Admin-MUSS-Marker sind historisch. Stage 08 bleibt außerhalb v0.1.
 - **Implementation ≠ Review:** Nur tatsächlich überprüfte Ergebnisse als bestanden markieren.
 - Keine Zugangsdaten in Git/Chat; administrative Zugriffe immer serverseitig prüfen.
 - Bestehenden Projektordner und DEV TOOLS schützen.

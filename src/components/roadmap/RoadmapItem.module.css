@@ -1,0 +1,42 @@
+.card {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: var(--kat-control-height);
+  padding: 0.75rem;
+  border: 1px solid var(--kat-art-border);
+  border-radius: var(--kat-radius-control);
+  background: var(--kat-surface);
+  box-shadow: var(--kat-shadow-card);
+  color: var(--kat-strong);
+  font-family: var(--kat-font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.card:hover {
+  border-color: var(--kat-border);
+  background: var(--kat-cream);
+}
+
+.card:focus-visible {
+  outline: var(--kat-focus-width) solid var(--kat-focus);
+  outline-offset: var(--kat-focus-offset);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    transition: border-color var(--kat-duration), background-color var(--kat-duration);
+  }
+}

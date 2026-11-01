@@ -9,7 +9,7 @@ export default function HomeCards() {
         title="Meine Projekte"
         description="Entdecke meine Softwareprojekte."
         image={homeImages.projects}
-        categories={["Web Apps", "Developer Tools", "Kreative Projekte"]}
+        categories={["Web Apps", "CLI Tools", "Lernprojekte"]}
       />
 
       <HomeCard

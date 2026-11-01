@@ -46,23 +46,110 @@ next-env.d.ts
 .dev.vars*
 
 
-# Only runtime assets required by the website (including fonts and licenses).
+# Only the website runtime files and required font licenses are allowed below.
 /design-system/**
+
+# Reopen parent directories; their other contents remain ignored.
 !/design-system/CUTE_COZY/
+!/design-system/CUTE_COZY/assets/
+!/design-system/CUTE_COZY/assets/cozy-originals/
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelbabies/
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelbabies/floof/
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelbabies/nibbs/
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelbabies/plopp/
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/development/
+!/design-system/CUTE_COZY/assets/cozy-originals/scenes/
 !/design-system/CUTE_COZY/branding/
 !/design-system/CUTE_COZY/fonts/
 !/design-system/CUTE_COZY/icons/
+!/design-system/CUTE_COZY/icons/currentColor/
+
+# Imported WebP images (including all images.ts registry entries).
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelbabies/floof/floof-personality.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelbabies/nibbs/nibbs-cozy.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelbabies/plopp/plopp-personality.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/06-cozy-cat-mug.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/48-sticker-laptop.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/49-cozy-notebook.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/50-pink-pencil.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/51-hair-chopsticks.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/52-book-stack.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/53-fluffy-socks.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/54-cat-charm.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/55-code-symbols.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/56-magic-dust.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/57-magical-stars.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/58-little-hearts.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/59-project-sticky-notes.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/60-idea-bulb.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/pixelkat/development/05-hyperfocus-laptop.webp
+!/design-system/CUTE_COZY/assets/cozy-originals/scenes/crew-coding.webp
+
+# Wordmark.
 !/design-system/CUTE_COZY/branding/wordmark-light.svg
+
+# Local fonts, licenses and source information.
 !/design-system/CUTE_COZY/fonts/NunitoSans.ttf
 !/design-system/CUTE_COZY/fonts/OFL-NunitoSans.txt
 !/design-system/CUTE_COZY/fonts/OFL-Quicksand.txt
 !/design-system/CUTE_COZY/fonts/Quicksand.ttf
 !/design-system/CUTE_COZY/fonts/SOURCES.md
+
+# SVG icons imported by uiIcons, including currentColor variants.
+!/design-system/CUTE_COZY/icons/accent.svg
+!/design-system/CUTE_COZY/icons/arrow-right.svg
+!/design-system/CUTE_COZY/icons/check.svg
+!/design-system/CUTE_COZY/icons/chevron-down.svg
+!/design-system/CUTE_COZY/icons/chevron-left.svg
+!/design-system/CUTE_COZY/icons/chevron-right.svg
+!/design-system/CUTE_COZY/icons/close.svg
 !/design-system/CUTE_COZY/icons/code.svg
+!/design-system/CUTE_COZY/icons/copy.svg
+!/design-system/CUTE_COZY/icons/currentColor/accent.svg
+!/design-system/CUTE_COZY/icons/currentColor/arrow-right.svg
+!/design-system/CUTE_COZY/icons/currentColor/check.svg
+!/design-system/CUTE_COZY/icons/currentColor/chevron-down.svg
+!/design-system/CUTE_COZY/icons/currentColor/chevron-left.svg
+!/design-system/CUTE_COZY/icons/currentColor/chevron-right.svg
+!/design-system/CUTE_COZY/icons/currentColor/close.svg
+!/design-system/CUTE_COZY/icons/currentColor/code.svg
+!/design-system/CUTE_COZY/icons/currentColor/copy.svg
+!/design-system/CUTE_COZY/icons/currentColor/download.svg
+!/design-system/CUTE_COZY/icons/currentColor/external-link.svg
+!/design-system/CUTE_COZY/icons/currentColor/file.svg
+!/design-system/CUTE_COZY/icons/currentColor/folder.svg
+!/design-system/CUTE_COZY/icons/currentColor/github-personalized.svg
+!/design-system/CUTE_COZY/icons/currentColor/github.svg
+!/design-system/CUTE_COZY/icons/currentColor/home.svg
+!/design-system/CUTE_COZY/icons/currentColor/ideas.svg
+!/design-system/CUTE_COZY/icons/currentColor/info.svg
+!/design-system/CUTE_COZY/icons/currentColor/instagram-personalized.svg
+!/design-system/CUTE_COZY/icons/currentColor/instagram.svg
+!/design-system/CUTE_COZY/icons/currentColor/menu.svg
+!/design-system/CUTE_COZY/icons/currentColor/project-folder.svg
+!/design-system/CUTE_COZY/icons/currentColor/projects.svg
+!/design-system/CUTE_COZY/icons/currentColor/search.svg
+!/design-system/CUTE_COZY/icons/currentColor/settings.svg
+!/design-system/CUTE_COZY/icons/download.svg
+!/design-system/CUTE_COZY/icons/external-link.svg
 !/design-system/CUTE_COZY/icons/file.svg
 !/design-system/CUTE_COZY/icons/folder.svg
+!/design-system/CUTE_COZY/icons/github-personalized.svg
+!/design-system/CUTE_COZY/icons/github.svg
 !/design-system/CUTE_COZY/icons/home.svg
+!/design-system/CUTE_COZY/icons/ideas.svg
 !/design-system/CUTE_COZY/icons/info.svg
+!/design-system/CUTE_COZY/icons/instagram-personalized.svg
+!/design-system/CUTE_COZY/icons/instagram.svg
+!/design-system/CUTE_COZY/icons/menu.svg
+!/design-system/CUTE_COZY/icons/project-folder.svg
+!/design-system/CUTE_COZY/icons/projects.svg
+!/design-system/CUTE_COZY/icons/search.svg
+!/design-system/CUTE_COZY/icons/settings.svg
+
+# Design tokens (their font URLs are included above).
 !/design-system/CUTE_COZY/tokens.css
 
 # Lokale Designreferenzen – gehören nicht ins Repository

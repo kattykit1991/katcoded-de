@@ -1,297 +1,174 @@
 # 🎮 PROJECT STATE
 
 > Mein Savegame für dieses Projekt.
-> Wenn ich nach einer Pause zurückkomme, soll ich hier schnell sehen:
 > **Wo bin ich? Was funktioniert schon? Was ist offen? Was kommt als Nächstes?**
+
+**Stand:** 01.11.2026 · lokaler Arbeitsstand · Präsentation am Montag, 02.11.2026.
 
 ---
 
 ## 🎯 CURRENT GOAL
 
-**STAGE 02 · Öffentliche Website aufbauen — in Arbeit (31.10.2026).**
+**KATCODED.DE v0.1: öffentliche Präsentationsversion funktional weitgehend fertig.**
 
-Stage 01 ist abgeschlossen. Die Startseite ist in kleine Komponenten aufgeteilt; die vier Themenkarten enthalten Texte, dekorative WebP-Bilder und Kategorien als reine Labels. Das CUTE_COZY-Kartenstyling und die CSS-Modules-Korrektur wurden lokal erfolgreich geprüft.
+Alle fünf Hauptseiten sind vorhanden. Der aktuelle Auftrag schließt ausschließlich die Dokumentation ab; er gibt keine Codeänderung, keinen Commit, Push oder ein Deployment frei.
 
-**Aktueller Fokus:** Dokumentierten Checkpoint vorbereiten. Noch keinen Commit oder Push ausführen. Vor einem späteren Commit muss die Aufnahme der vier benötigten WebP-Dateien geklärt werden: Sie sind lokal vorhanden, werden aber noch ignoriert.
+**Scope-Entscheidung von Kat:** Kein privates Admin-Dashboard in KATCODED.DE. Die spätere Projekt- und Roadmap-Verwaltung gehört in die separate private Anwendung **KATUARY**. Die Website soll ausschließlich ausdrücklich freigegebene öffentliche Daten anzeigen. Aktuell sind diese Daten statisch im Quellcode hinterlegt. Datenbank, Authentifizierung, API und Synchronisierung sind nicht implementiert.
 
-**Stage 02 ist nicht abgeschlossen:** Eine echte Projektübersicht, funktionierende Abschnittsziele der Navigation und ein Dashboard-Platzhalter fehlen. Die vollständige responsive und Accessibility-Prüfung steht aus.
+**Stage-Einordnung:** Stage 01 technisch abgeschlossen. Die öffentliche Implementierung aus Stage 02 ist vorhanden; der frühere Dashboard-Platzhalter ist ausdrücklich entfallen. Vollständige responsive/Accessibility-Abnahme und Release-Nachweise bleiben offen. Die alten Backend-/Admin-Stages sind keine v0.1-Pflichten mehr.
 
 ---
 
 ## 📍 CURRENT STATE
 
-**Was funktioniert bereits? Was ist nachweislich fertig oder getestet?**
+### Fertig umgesetzt · lokaler Quellcode
 
-### Projektgrundlage
+| Bereich | Tatsächlicher Umfang |
+| --- | --- |
+| `/` | `HomeHero` und vier `HomeCard`-Themenkarten; Texte, Kategorien und dekorative Bilder über `HomeCards`. Kategorien sind Labels, Karten sind keine Navigationslinks. |
+| `/projects` | Drei öffentliche Projektdatensätze aus `src/data/projects.ts`, Filter „Alle“, „Web Apps“, „CLI Tools“, „Lernprojekte“, kompakte Technologien-Badges und native Detaildialoge. Ein über die Kartenfläche gelegter semantischer Button öffnet den Dialog. |
+| `/about` | Vier vollständige persönliche Abschnitte mit abwechselnden Bildpositionen; zusätzlicher kompakter KI-Transparenzhinweis unterhalb dieser vier Abschnitte. |
+| `/dev-tools` | Drei Developer-Tools-Karten, nicht interaktive Markdown-Dateibadges, Statusangaben, bestehender kat-create-GitHub-Link sowie drei Environment-Karten. |
+| `/roadmap` | 13 statische Aufgaben in vier Pastellspalten; gemeinsamer Board-Container, Mindestbreite 264 px pro Spalte, ausschließlich boardinternes horizontales Scrollen. Titelbuttons mit maximal zwei Zeilen öffnen den Detail-Blerp mit Titel, Status, Kategorie und Beschreibung. Keine Bearbeitung. |
+| Gemeinsamer Rahmen | `SiteHeader`, `SiteNavigation`, `SiteFooter`; Next.js-Links zu allen fünf Routen; aktive Navigation mit `aria-current="page"`, Mint-Hervorhebung und Fokuszuständen. Header und Footer verwenden den Creme–Rosa–Lavendel-Verlauf. |
+| Branding und Transparenz | Unverändertes Wortlogo; KC-Favicon mit türkiser Brille, ICO 16/32/48 px; sichtbarer KI-Hinweis im Footer und ausführlicher auf About. |
+| Unterseiten-Heros | Einheitliche Sparkles-Eyebrows. Jeweils exakt dieselben `homeImages` wie in der passenden Homepage-Karte: Notizbuch, Laptop, Katzentasse, Bücherstapel; dekorativ mit `alt=""`. |
 
-- [x] Projektverzeichnis mit `kat-create` angelegt.
-- [x] KAT DEV TOOLS im Projektverzeichnis vorhanden.
-- [x] `PROJECT_START.md` ausgefüllt.
-- [x] `PROJECT_REQUIREMENTS.md` ausgefüllt.
-- [x] `PROJECT_BUILD_GUIDE.md` vorbereitet.
-- [x] Next.js 16.4.3 mit React 19.3.0, TypeScript und App Router initialisiert.
-- [x] Tailwind CSS 4 und ESLint eingerichtet; Konfigurationen geprüft.
-- [x] Entwicklungsserver und Homepage unter `localhost:3000` im vorangegangenen Korrekturlauf tatsächlich in Safari geprüft; Kat hat die Karten ebenfalls bestätigt.
-- [x] Paketname in `package.json` und beiden Namensfeldern von `package-lock.json`: `katcoded-de-v01`; keine Dependency-Änderungen.
-- [x] Vorbereitete `PROJECT_README.md` vollständig und bytegleich in `README.md` umbenannt; nur eine README vorhanden.
-- [x] Git-Repository auf `main`; bestehender Remote `origin` und bisheriger Checkpoint `197fc29` vorhanden. Aktueller Kartenstand noch nicht committed.
-- [x] `.gitignore` geprüft: `node_modules/`, `.next/`, `.env`, lokale `.env`-Varianten und `.DS_Store` werden ignoriert.
-- [x] `AGENTS.md`, README und vorhandene DEV TOOLS erhalten. In diesem Dokumentationsauftrag werden nur State, Build Guide und Requirements aktualisiert.
-- [x] Eigene Homepage mit Hero-Grundgerüst und vier wiederverwendbaren Themenkarten umgesetzt; kein Next.js-Demoinhalt mehr.
-
-### Homepage · umgesetzte Meilensteine
-
-- **Fertig umgesetzt und lokal geprüft:** vier Karten „Meine Projekte“, „Dev Tools“, „Über mich“, „Roadmap“ mit bestehenden Texten, Bildern und jeweils drei nicht interaktiven Kategorie-Labels.
-- **Fertig umgesetzt und lokal geprüft:** CUTE_COZY-Flächen, Rahmen, Rundungen, Schatten und Typografie über vorhandene Tokens; Gestaltung in zwei CSS Modules.
-- **Fertig behoben:** fehlende CSS-Module-Klassen durch die Turbopack-Regel; Details unter „Technische Entscheidungen“.
-- **Umgesetzt, aber nicht vollständig geprüft:** responsives Kartenraster (eine Spalte, ab 48rem zwei, ab 80rem vier), umbrechende Badges, begrenzte Bilder und reduzierte Hover-Bewegung. Die Safari-Sichtprüfung zeigte vier gestaltete Karten im Zweispaltenraster; nicht alle Breiten, Zoomstufen oder assistiven Technologien sind geprüft.
-- **In Arbeit:** öffentliche Website gemäß Stage 02 und FR001. Die Themenkarte „Meine Projekte“ ist noch keine Übersicht konkreter Projekte.
-- **Geplant:** weitere öffentliche Projektansichten, Dashboard-Platzhalter, Datenbank, Authentifizierung, CRUD und Veröffentlichungssteuerung.
+Die Roadmap-Inhalte beschreiben teils zukünftige Arbeit. Ein Eintrag „Datenbankanbindung“ unter „Geplant“ ist kein Beleg einer bestehenden Datenbank. Die Statusangaben der Projekt- und Roadmap-Daten wurden bei diesem Dokumentationsabgleich nicht verändert.
 
 ### Bestehende Komponentenstruktur
 
-| Datei | Zuständigkeit |
+| Datei / Ordner | Zuständigkeit |
 | --- | --- |
-| `src/app/page.tsx` | Setzt `HomeHero` und `HomeCards` zusammen. |
-| `src/components/home/HomeHero.tsx` | Kurze Begrüßung und Einführung; im Kartenauftrag unverändert. |
-| `src/components/home/HomeCards.tsx` | Texte, Kategorien und Bildzuordnung der vier Karten. |
-| `src/components/home/HomeCard.tsx` | Wiederverwendbare Struktur; Props `title`, `description`, `image`, `categories`; dekoratives Next-Image und semantische Kategorienliste. |
-| `src/lib/images.ts` | Zentrale statische Importe der vier lokalen WebP-Dateien. |
-| `src/components/home/HomeCard.module.css` | Kartenfläche, Text-/Bildanordnung, Bildbegrenzung, Badges und Hover. |
-| `src/components/home/HomeCards.module.css` | Raster, Breakpoints, Außenabstände und Farben nach Kartenreihenfolge. |
-| `src/app/layout.tsx` | Gemeinsamer Rahmen, Navigation, Metadaten, Token-Import und Footer-Platzhalter. |
+| `src/app/layout.tsx` | Globaler Seitenrahmen, Metadaten, Token-/CSS-Import, Skip-Link und gemeinsamer Hauptbereich. |
+| `src/components/layout/` | `SiteHeader`, kleine Client-Navigation mit `usePathname`, zentraler Footer mit CSS Module. |
+| `src/app/page.tsx`, `src/components/home/` | Homepage-Zusammensetzung, Hero, Karteninhalte und wiederverwendbare Kartenstruktur; drei CSS Modules. |
+| `src/app/projects/`, `src/components/projects/` | Server-Seite mit Veröffentlichungsfilter, Client-Galerie mit Filter-/Auswahlstate, Karten und `ProjectModal`; jeweilige CSS Modules. |
+| `src/types/project.ts`, `src/data/projects.ts` | Projekt-Typ und statische Datensätze; keine Datenbank. |
+| `src/app/about/`, `src/components/about/` | About-Seite, wiederverwendbare `AboutSection` mit bestehenden Props, CSS Modules. |
+| `src/app/dev-tools/`, `src/components/dev-tools/` | Dev-Tools-Inhalte und `DevToolCard`, CSS Modules. |
+| `src/app/roadmap/page.tsx` | Server-Komponente und einzige Quelle der statischen Roadmap-Aufgaben. |
+| `src/components/roadmap/` | `RoadmapBoard` hält Auswahlstate, `RoadmapItem` rendert Titelbutton und gemeinsame Typen, `RoadmapModal` behandelt Details und Dialoginteraktionen; drei CSS Modules. |
+| `src/lib/images.ts` | `homeImages`, `pageImages`, `aboutImages`, `accessoryImages`; bestehende statische Bildimporte. |
+| `src/lib/icons.ts` | `uiIcons` mit 50 SVG-Imports einschließlich currentColor-Varianten. |
+| `design-system/CUTE_COZY/` | Bestehende Tokens, lokale Fonts, Wortlogo, Icons und Illustrationen. |
+
+Die drei neu ergänzten Unterseiten-Heros verwenden CSS-Modules-`composes` aus `src/app/projects/page.module.css` für Eyebrow, Layout und Bildbegrenzung. Bei einer späteren Änderung der Referenzklasse die vier Heros gemeinsam prüfen; keine neue Komponentenarchitektur erforderlich.
 
 ### Technische Entscheidungen
 
-- Bestehende Komponentenverantwortlichkeiten erhalten; kein Zusammenführen, keine zusätzliche Bibliothek und keine neue Route für das Kartenstyling.
-- CUTE_COZY – **Pink First, Cozy Always**. `design-system/CUTE_COZY/tokens.css` ist bereits über `layout.tsx` eingebunden, aktiv über `kat-ui` und `data-kat-theme="cozy"`. Lokale Quicksand-/Nunito-Schriften, Pastellfarben, Textfarben, Karten-/Pill-Radien, Rahmen, Schatten und Bewegungsdauer werden wiederverwendet; das Designsystem bleibt unverändert.
-- Tailwind CSS **4.3.3** bleibt für den bestehenden Rahmen erhalten. Kartenstyling liegt für die Lesbarkeit überwiegend in CSS Modules.
-- **Turbopack-Ursache:** Die Regel `"*.css"` mit `as: "*.css"` erfasste auch `.module.css` und behandelte sie als gewöhnliches CSS. Dadurch fehlten die Klassenexports; `styles.card`/`styles.image` führten zu keinen Klassenattributen im HTML. `next.config.ts` schließt CSS Modules nun über `condition: { not: { path: "*.module.css" } }` von dieser Loader-Regel aus. Native CSS-Module-Verarbeitung bleibt erhalten; globale Tailwind-Verarbeitung bleibt bestehen.
-- Statische Bildimporte liefern Maße; `height: auto`, `object-fit: contain` und `max-width: 8rem` begrenzen die Bilder ohne Beschnitt oder Verzerrung. `alt=""` entspricht ihrer dekorativen Funktion. Kategorien bleiben `ul`/`li`, ohne Fake-Links oder Buttons.
-- `references/` ist ausschließlich lokale Designreferenz und bleibt aus Git ausgeschlossen. `references/homepage-prototype.tsx` ist keine aktive Homepage.
-- OpenNext-/Wrangler-Konfiguration besteht bereits; Worker und Self-Reference heißen `katcoded-de`. `cacheComponents` und `partialPrefetching` sind nach dem früheren Workers-Laufzeitproblem nicht aktiviert. Kein erneuter Cloudflare-Test oder Deployment in diesem Auftrag.
+- **CSS Modules bleiben die Hauptform des Komponentenstylings.** Tailwind CSS 4.3.3 ist tatsächlich installiert und im gemeinsamen Rahmen/der Navigation sowie über `globals.css` eingebunden. Kein Widerspruch zwischen beiden Ansätzen.
+- **CUTE_COZY – Pink First, Cozy Always:** `tokens.css` ist in `layout.tsx` importiert; Aktivierung über `kat-ui` und `data-kat-theme="cozy"`. Lokale Quicksand-/Nunito-Schriften und vorhandene Farb-, Rahmen-, Radius-, Schatten- und Fokus-Tokens werden verwendet.
+- **Behobene CSS-Modules-Ursache:** Die globale Turbopack-Regel `"*.css"` mit `as: "*.css"` erfasste früher auch `.module.css`; dadurch fehlten Klassenexports und Klassenattribute. `next.config.ts` schließt `.module.css` über `condition: { not: { path: "*.module.css" } }` aus dieser Regel aus. Die native CSS-Module-Verarbeitung bleibt erhalten. Dieser behobene Fehler ist vom aktuellen umgebungsbedingten Build-Abbruch zu unterscheiden.
+- Statische Next-Image-Importe liefern Bildmaße. CSS begrenzt die Darstellung mit `height: auto` und `object-fit: contain`; Hero-Accessoires maximal 180 px, Homepage-Kartenbilder maximal 128 px. Die vier About-Bilder behalten ihre bestehenden beschreibenden Alt-Texte; eine vollständige Bewertung aller Bildalternativen steht noch aus.
+- **Veröffentlichungsfilter:** `src/app/projects/page.tsx` filtert `published` vor der Übergabe an die Client-Galerie. Alle drei aktuellen Datensätze sind öffentlich. Keine Laufzeit-Verwaltungsoberfläche, kein getesteter Entwurfs-/Freigabeworkflow und keine Geheimhaltungsgarantie für Daten in öffentlichen Source-Dateien.
+- **Dialoge:** Beide Details verwenden `showModal()`. Der Roadmap-Dialog ergänzt Schließen-Button, Escape, echten Hintergrundklick, Öffnungsfokus und Rückkehrfokus; seine Tab-Behandlung ist auf den aktuell einzigen Dialogbutton zugeschnitten. Der Projekt-Dialog besitzt Schließen/Escape und einen optionalen GitHub-Link; kein gleichwertiger Backdrop-Handler vorhanden.
+- **KATUARY:** Spätere private Verwaltung außerhalb dieser Website. Datenvertrag, Veröffentlichung, Feldauswahl, Transport, Berechtigungen und Aktualisierung sind noch zu planen; keine konkrete Datenbank- oder API-Technologie neu beschlossen.
+- `references/` bleibt ignorierte lokale Designreferenz, keine aktive Route und kein Veröffentlichungsbestandteil.
+- **Cloudflare-Vorbereitung im Repository:** OpenNext-Konfiguration, Wrangler und npm-Skripte existieren; Worker und `WORKER_SELF_REFERENCE` heißen `katcoded-de`. `cacheComponents`/`partialPrefetching` sind nicht aktiviert. Die frühere Workers-Korrektur und Veröffentlichung wurden im Verlauf von Kat bestätigt. Kein aktueller Workers-/Online-Nachweis des finalen Arbeitsstands.
 
-### Prüfstand · 31.10.2026
+### Verifizierter Tech-Stack · 01.11.2026
 
-- **TypeScript erneut bestanden:** `./node_modules/.bin/tsc --noEmit --incremental false` — Exit 0.
-- **ESLint erneut bestanden:** `npm run lint` — Exit 0; eine bekannte Warnung `@next/next/no-img-element` in der unveränderten lokalen Assetpack-Datei `design-system/CUTE_COZY/examples/react.jsx:13`.
-- **Produktionsbuild erneut bestanden:** `npm run build` — Exit 0 mit erweiterten lokalen Prozess-/Portrechten. Route `/` statisch generiert; keine Projekt- oder Dashboard-Route vorhanden. Kein OpenNext-Build in diesem Dokumentationsauftrag.
-- **Laufzeitnachweis aus dem unmittelbar vorangegangenen Korrekturlauf:** Safari auf `localhost:3000` zeigte alle vier gestalteten Karten; Inspector zeigte generierte CSS-Module-Klassen und für das erste Bild berechnete 128 × 128 Pixel. Produktions-HTML enthielt Klassen für alle vier Karten/Bilder und passende Selektoren im erzeugten CSS. Diese Browserprüfung wurde für die reine Dokumentationsänderung nicht wiederholt.
-- **Nicht vollständig geprüft:** Smartphone-/Tablet-/Desktop-Matrix, Browserzoom/Textvergrößerung, Screenreader, vollständige Tastaturprüfung und WCAG 2.2 AA. Keine umfassende Konformitätsaussage.
-- **Git und Diff geprüft:** `main` mit bestehendem `origin/main`; Kartenänderungen lokal, zusätzlich neue CSS Modules und `src/lib/images.ts`. Keine Konfliktmarkierungen oder Whitespace-Fehler im geprüften Diff. Vier neue Laufzeitbilder sind noch ignoriert — frischer Checkout dieses Arbeitsstands deshalb noch nicht abgesichert.
-- **Historischer Setupbefund eingeordnet:** Der am 29.10. noch offene Produktionsbuild ist inzwischen erfolgreich. Die damaligen Font-/Sandbox-Probleme sind kein aktueller Build-Blocker. Lokale Fonts sind vorhanden.
+Next.js **16.4.3**, React/React DOM **19.3.0**, TypeScript **5.9.3**, Tailwind CSS **4.3.3**, CSS Modules; installiertes Deployment-Tooling OpenNext Cloudflare **1.20.14** und Wrangler **4.155.0**. Lokale Umgebung: Node.js **24.19.0**, npm **12.1.0**.
 
-Verständnis-Lernziele im Build Guide werden nicht aus vorhandenem Code abgeleitet. Ein funktionierendes Kartenlayout erfüllt weder die gesamte Stage 02 noch die vollständige FR001.
+### Prüfstand und seine Grenzen
 
-### Projektziel
+| Prüfung | Tatsächlicher Nachweis |
+| --- | --- |
+| TypeScript | Im unmittelbar vorangegangenen finalen Asset-Auftrag am 01.11.2026: `./node_modules/.bin/tsc --noEmit --incremental false`, Exit 0. Für den reinen Dokumentationsauftrag nicht erneut ausgeführt. |
+| ESLint | Im selben Asset-Auftrag: `npm run lint`, Exit 0; eine bekannte Warnung `@next/next/no-img-element` in `design-system/CUTE_COZY/examples/react.jsx:13`. |
+| Next-Produktionsbuild | Letzter Versuch am 01.11.2026 abgebrochen: Turbopack kann einen lokalen Port nicht öffnen (`Operation not permitted`, beim Verarbeiten von `globals.css`). Umgebungsproblem; erfolgreicher Build des finalen Stands weiterhin offen. Keine Workarounds/Konfigurationsänderungen. |
+| Safari · Seitendarstellung | Im bisherigen v0.1-Verlauf alle fünf Hauptseiten lokal aufgerufen. Vier Unterseiten-Heros mit proportionalen Bildern bei Desktop/Mobil geprüft; frühere Feinschliffprüfung bei 320/1440 px. Nach abschließender Bildzuordnung alle vier Bilder erneut sichtbar; nur Referenzen geändert, CSS unverändert. |
+| Safari · Roadmap | Frühere fokussierte Prüfungen bei 320/768/1280/1440 px; letzte Spalte bei 320 px vollständig erreichbar. Öffnen per Maus/Enter, Schließen per Button/Escape/Hintergrund, Fokusbindung und Rückkehrfokus geprüft. Kein physischer Touch-Nachweis. |
+| Safari · Footer/Favicon | Footer auf allen fünf Seiten vorhanden, KI-Hinweis sichtbar; About/Footer bei 320/768/1440 px geprüft. Neues KC-ICO direkt ausgeliefert und im Website-Tab sichtbar. |
+| Quellcode-/Dokumentationsabgleich | In diesem Auftrag: acht angeforderte Dokumente gelesen; Routen, Daten, Komponenten, Paketversionen, Konfiguration und Git-Asset-Bestand geprüft. Keine neuen Browser-/Funktionstests und kein neuer Build. |
 
-`katcoded.de v0.1` wird die erste funktionierende Version meiner persönlichen Developer-Website.
+**Nicht belegt:** vollständige Cross-Browser-Matrix, Screenreader, physisches Touch-Wischen, umfassender Textzoom-/Reflow-/Kontrasttest, vollständige WCAG-2.2-AA-Konformität, automatisierte Ende-zu-Ende-Suite und aktuelle Online-/Workers-Laufzeit. Die Projektfilter und Projekt-Dialoge sind implementiert; eine vollständige dokumentierte Testmatrix ist noch offen.
 
-Die Anwendung verbindet eine öffentliche Portfolio-Website mit einer geschützten Projektverwaltung.
-
-**MVP-Funktionen:**
-
-- Öffentliche Startseite mit Developer-Informationen.
-- Öffentliche Übersicht ausgewählter Projekte.
-- Geschützter Admin-Bereich mit Login.
-- Projekte erstellen, bearbeiten und löschen.
-- Projektdaten dauerhaft in einer Datenbank speichern.
-- Projekte gezielt veröffentlichen oder als Entwurf behalten.
-
-**Optional bei ausreichender Zeit:**
-
-- Projektaufgaben verwalten.
-- Projektfortschritt anhand erledigter Aufgaben darstellen.
-
-### Technischer Stand
-
-**Eingerichtet / vorgesehen:**
-
-- Framework: Next.js 16.4.3 mit App Router (eingerichtet)
-- Sprache: TypeScript (eingerichtet und geprüft)
-- Styling: Tailwind CSS 4.3.3 und CSS Modules; CUTE_COZY integriert, Karten gestaltet
-- Datenbank: Neon PostgreSQL
-- Deployment: Cloudflare Workers mit OpenNext; bestehende Konfiguration, frühere Veröffentlichung laut Kat erfolgt
-
-**Bereits vorbereitet:**
-
-- Neon-Projekt `katcoded-web` in der Region Frankfurt.
-- Bestehendes lokales Projektverzeichnis.
-- Projektanforderungen und Build Guide.
-
-**Noch nicht umgesetzt:**
-
-- Datenbankverbindung.
-- Datenbankschema.
-- Authentifizierung und Zugriffsschutz.
-- Admin-Dashboard.
-- Projektverwaltung.
-- Öffentliche Projektansichten.
-- Vollständige Online-Prüfung des aktuellen Kartenstands und später des MVP.
-
-**Noch offen:**
-
-- Konkrete Authentifizierungslösung festlegen.
+**Historisch:** Am 31.10.2026 wurde ein erfolgreicher Next-Build des damaligen Homepage-Kartenstands dokumentiert. Das ist kein erfolgreicher Build der später ergänzten fünfseitigen v0.1. Die frühere Aussage „keine Buildbeschränkung mehr“ gilt nicht für den aktuellen Lauf.
 
 ---
 
 ## ➡️ NEXT STEP
 
-**Was mache ich als Nächstes?**
+### Vor der Präsentation / technischer Abschluss
 
-### STAGE 02 · Öffentliche Website aufbauen
+1. Den finalen Stand in einer lokalen Umgebung ohne die Port-Binding-Beschränkung bauen; Ergebnis festhalten. Kein automatisches Deployment daraus ableiten.
+2. Für einen später ausdrücklich freigegebenen Git-Checkpoint alle benötigten Source-/Asset-Dateien gezielt reviewen. **Noch kein Commit/Push durch diesen Auftrag.**
+3. Die verschachtelten `<main>`-Elemente der Homepage mit Kat gezielt korrigieren und danach die Landmark-/Tastaturprüfung wiederholen. Hier nur dokumentiert, kein Quellcode geändert.
+4. Die fünf Routen, Filter und beide Dialoge vor der Präsentation kurz durchgehen; aktuelle Online-Version bei Bedarf separat verifizieren. Prüflücken nicht als erledigt markieren.
 
-**Zuerst den Checkpoint vervollständigen:** Aufnahme der vier benötigten WebP-Dateien in Git gezielt mit Kat klären. Die aktuelle Ignore-Regel lässt sie nicht zu; in diesem Auftrag bleibt sie unverändert. Danach vollständigen Commitumfang prüfen und erst bei erneuter Freigabe committen/pushen.
+### Wiedereinstieg nach der Präsentation
 
-**Nächster Entwicklungsschritt:** Mit Kat die fehlenden Ziele der vorhandenen Navigation abstimmen. Laut Build Guide stehen danach die konkrete Projektübersicht und die übrige öffentliche Seitenstruktur an, anschließend der Dashboard-Platzhalter. Keine neuen Routen oder Inhalte sind durch diese Dokumentation freigegeben.
-
-**Weiter prüfen:** schmale und breite Ansichten, Textzoom und Accessibility. CUTE_COZY bleibt die bestätigte Designrichtung; Hero und Footer sind noch einfache Grundgerüste.
+Zuerst mit Kat die Ergebnisse der Präsentation und die offenen technischen Prüfungen durchgehen. Danach einen überschaubaren nächsten Schritt wählen: Accessibility-/Semantikabschluss oder Planung der KATUARY-Datenschnittstelle. Keine automatische Fortsetzung der alten Admin-/Neon-Stages und keine neue Feature-Freigabe durch diese Dokumentation.
 
 ---
 
 ## 🐛 KNOWN PROBLEMS
 
-**Was funktioniert noch nicht richtig oder verhält sich komisch?**
-
-- **Checkpoint-Blocker:** Die vier in `src/lib/images.ts` importierten WebP-Dateien sind lokal vorhanden, aber nicht versioniert und werden ignoriert. Eine reine Aufnahme der TS-/CSS-Dateien wäre unvollständig.
-- **Navigation:** `#home`, `#projekte`, `#dev-tools`, `#ueber-mich`, `#roadmap` haben in den aktuellen Komponenten keine passenden IDs. Der Logo-Link `/` und der Skip-Link `#inhalt` haben vorhandene Ziele; die komplette Navigation ist nicht als fertig zu bewerten.
-- **Semantik:** `layout.tsx` enthält `<main id="inhalt">`, `page.tsx` ein weiteres `<main>`; verschachtelte Hauptbereiche sind offen zu prüfen und mit Kat gezielt zu korrigieren. Keine Codeänderung in diesem Auftrag.
-- **Bekannte Warnung:** ESLint im unveränderten Assetpack-Beispiel (siehe Prüfstand); keine TypeScript- oder Buildfehler.
-- **Prüflücken:** vollständige Responsive-/Accessibility-Prüfung und aktueller Cloudflare-Laufzeitnachweis fehlen. Der erfolgreiche Next-Build allein belegt keine Workers-Laufzeit.
-- **Historische Dependency-Warnungen:** Kat meldete zuvor vier High-Warnungen in der OpenNext-Dev-Abhängigkeitskette und null mit `npm audit --omit=dev`. In diesem Auftrag nicht erneut auditiert; kein aktueller Audit-Nachweis und keine Updates.
+- **Frischer Checkout noch nicht abgesichert:** Git-Branch `main`, letzter Commit `680e2fa` (`feat: style homepage cards and update project docs`). Die spätere fünfseitige Implementierung liegt teilweise geändert/unversioniert im Arbeitsbaum. GitHub-Inhalt nicht erneut online verglichen.
+- **Asset-Übergabe:** 72 statische Bild-/Icon-/Font-Dateireferenzen geprüft; alle lokal vorhanden. Davon **60 Dateien ignoriert und unversioniert: 15 WebP und 45 SVG** aus den Registries. Die vier Homepage-WebP-Dateien sind inzwischen versioniert; der alte Vier-Bilder-Blocker ist überholt. Vor einem neuen Checkout/Build müssen auch die neu hinzugekommenen Imports enthalten sein. Keine `.gitignore`- oder Indexänderung in diesem Auftrag.
+- **Semantik der Homepage:** `src/app/layout.tsx` enthält `<main id="inhalt">`, `src/app/page.tsx` ein weiteres `<main>`. Dieses verschachtelte Haupt-Landmark ist tatsächlich noch vorhanden. Kein Fehlerbehebungsauftrag durch die Dokumentation.
+- **Produktionsbuild:** aktueller Umgebungsblocker und fehlender endgültiger Build-Nachweis, siehe Prüfstand.
+- **Lint:** eine unveränderte Warnung im lokalen Designsystem-Beispiel; keine TypeScript-/ESLint-Fehler im letzten Testlauf.
+- **Sicherheits-/Dependency-Review:** Früher von Kat gemeldete vier High-Warnungen in der OpenNext-Dev-Kette, null bei `npm audit --omit=dev`; historischer Befund, am 01.11. nicht erneut auditiert. Keine Updates oder `audit fix` ausgeführt.
+- **Keine aktuelle Release-Aussage:** Frühere Cloudflare-Veröffentlichung ist kein Nachweis, dass der finale lokale Stand online ist oder unter einer bestimmten URL aktuell fehlerfrei läuft.
 
 ---
 
 ## 🐇 PARKED SIDEQUESTS
 
-**Was möchte ich vielleicht machen, aber NICHT jetzt?**
+**Nicht automatisch Teil von v0.1:** Community-/Kommentarfunktionen, Besucherinteraktionen, Pixelbabie Secrets/Easter Eggs, weitere Portfolio-Funktionen, Design-Themes, Projekt-Updates und Statistiken.
 
-### Erweiterungen außerhalb des MVP
+**Spätere technische Möglichkeiten:** KATUARY-Verbindung mit expliziter Freigabe öffentlicher Daten; gegebenenfalls Aufgaben-/Fortschrittsansichten. Private Verwaltung bleibt in KATUARY. Weitergehende Features erst nach bewusster Entscheidung.
 
-- Kommentarfunktionen für Projekte.
-- Community-Funktionen und Interaktionen.
-- Erweiterte öffentliche Projektinformationen.
-- Zusätzliche Portfolio-Funktionen.
-- Kleine Easter Eggs und persönliche Website-Details.
-
-### Spätere technische Möglichkeiten
-
-- Verbindung mit KATUARY, falls dafür später ein konkreter Anwendungsfall entsteht.
-- Weitere Verwaltungsfunktionen für eigene Entwicklungsprojekte.
-- Zusätzliche Auswertungen und Projektstatistiken.
-
-**Wichtig:**
-
-Diese Ideen gehören nicht automatisch zum Umfang von `katcoded.de v0.1`.
-
-Neue Funktionen werden erst nach bewusster Entscheidung in die Projektplanung aufgenommen.
+Persönliche Brainblerps bleiben in `NOTES.md`; die Ideensammlung wird nicht als feste Anforderung behandelt.
 
 ---
 
 ## 🧹 CLEANUP LATER
 
-**Was funktioniert, sollte aber später noch aufgeräumt oder verbessert werden?**
-
-- Die README wurde auf ausdrücklichen Wunsch inhaltlich vollständig erhalten. Sie enthält deshalb noch alte Planungsangaben (Framework noch nicht initialisiert / Entwicklung nicht begonnen). Eine inhaltliche Aktualisierung bleibt separat offen.
-- Build Guide und Requirements sind jetzt anhand des Codes abgeglichen. Offene Lernziele und vollständige Stage-Abschlüsse nicht mit abgeschlossenen technischen Teilaufgaben verwechseln.
-- Kartenfarben werden in `HomeCards.module.css` über die Reihenfolge zugeordnet; beim späteren Umordnen die Farbreihenfolge bewusst mitprüfen.
+- Nach Präsentation Accessibility und Cross-Browser-Prüfung systematisch abschließen; keine vollständige WCAG-Freigabe behaupten.
+- Beim Umordnen von Homepage-Karten die über `nth-child` zugeordneten Farben mitprüfen.
+- Nach Git-/Asset-Review einen frischen Checkout inklusive aller nötigen Runtime-Dateien testen; keine pauschale Aufnahme des vollständigen Assetpacks.
+- Deployment- und Dependency-Prüfungen gezielt erneuern, wenn ein separater Release-Auftrag vorliegt.
+- README, State und Requirements bei einem tatsächlich geänderten Funktions-/Prüfstand gemeinsam konsistent halten; keine parallele `PROJECT_README.md` anlegen.
 
 ---
 
 ## 🧠 IMPORTANT CONTEXT
 
-**Was darf Future-Kat beim Wiedereinstieg auf keinen Fall vergessen?**
+### 1 · Projekt und Lernen
 
-### 1 · Projektkontext
+`katcoded.de` ist Teil meiner Developer-Identität KATCODED und meines Software-Engineering-Lernwegs an der WBS CODING SCHOOL. Die ursprüngliche Projektidee wurde laut bisheriger Dokumentation mit Dozent Stephan besprochen. Die spätere Scope-Änderung ist Kats Entscheidung; eine erneute externe Kursabnahme wird nicht behauptet.
 
-`katcoded.de` ist Teil meiner Developer-Identität KATCODED.
+Kat bleibt die Programmiererin. Kleine Komponenten, verständliche Props und ausgelagerte Styles erhalten. Die Regeln in `AGENTS.md` und Kats Kommentarstil in `KATCOMMENTS_v0.1.md` gelten weiter.
 
-Die Website soll langfristig mehr sein als ein statisches Portfolio. Für `v0.1` konzentriere ich mich jedoch auf eine funktionierende, überschaubare Grundlage.
+### 2 · Historische Entscheidungen erhalten
 
-Das Projekt entsteht im Rahmen meiner Weiterbildung im Software Engineering bei der WBS CODING SCHOOL.
+- Stage 01: mit `kat-create` angelegten Ordner geschützt, Next.js eingerichtet, Paketname korrigiert, vorbereitete README wiederhergestellt und Git-Grundlage angelegt.
+- Frühe Deployment-Arbeit: OpenNext-/Wrangler-Vorbereitung, Worker-Namensabgleich auf `katcoded-de`, Cache-Components-/Runtime-Problem im Verlauf behandelt. Nicht erneut als aktuelle Online-Prüfung ausgeben.
+- Homepage-Karten-Checkpoint am 31.10.: CSS-Modules-Korrektur und vier WebP-Dateien in Commit `680e2fa`; frühere Referenz auf `197fc29` war ein älterer Checkpoint.
+- Ursprünglich geplanter Admin-/CRUD-/Neon-MVP am 01.11. durch **öffentliche Website + spätere separate KATUARY-Verwaltung** ersetzt. Neon-Projekt `katcoded-web` war laut alter Planung vorbereitet; externer Zustand ungeprüft, keine Anbindung im Code.
 
-Die Projektidee wurde mit meinem Dozenten Stephan besprochen und als Kursprojekt akzeptiert.
+### 3 · Projekt, Domain und Daten schützen
 
-### 2 · MVP vor Erweiterungen
+Das bestehende Next.js-Projekt nicht neu initialisieren. DEV TOOLS und individuelle Dateien erhalten. Keine Cloudflare-/DNS-/E-Mail-Änderung durch einen Dokumentations- oder Stylingauftrag. Keine privaten Daten oder Secrets in statischen Projektdatensätzen, Git oder Browsercode ablegen.
 
-Der erste Meilenstein ist eine funktionierende Anwendung mit:
+Der spätere öffentliche KATUARY-Datenvertrag muss freigegebene Datensätze **und Felder** begrenzen. Die heutige `published`-Filterung ersetzt keine Authentifizierung oder private Datenhaltung.
 
-- öffentlicher Website,
-- geschütztem Admin-Bereich,
-- persistenter Projektverwaltung,
-- kontrollierter Veröffentlichung.
+### 4 · Dokumentation und aktueller Savepoint
 
-Optionale Funktionen dürfen die Fertigstellung des MVP nicht blockieren.
+- `README.md`: öffentliche englische Beschreibung der tatsächlichen v0.1.
+- `PROJECT_START.md`: aktueller Scope und historische Ausgangsidee.
+- `PROJECT_REQUIREMENTS.md`: ursprüngliche IDs plus heutige Gültigkeit und Erfüllungsstand.
+- `PROJECT_BUILD_GUIDE.md`: aktuelle Route und ausdrücklich markierte historische Lernstages.
+- `NOTES.md`: persönliche Ideen, unverändert erhalten.
+- `DEV_TOOLS_README.md`, `KATCOMMENTS_v0.1.md`: allgemeines Toolkit/Kommentarregeln, geprüft und unverändert erhalten.
 
-### 3 · Bestehendes Projektverzeichnis schützen
+**Savepoint 01.11.2026:** fünf öffentliche Seiten und UI-Details lokal umgesetzt; TypeScript/Lint zuletzt bestanden. Finaler Produktionsbuild umgebungsbedingt offen, Git-/Asset-Übergabe und Accessibility-Nacharbeit noch erforderlich. Dokumentationsabschluss ist keine vollständige technische Release-Abnahme.
 
-Das Projekt wurde bereits mit meinem eigenen CLI-Tool `kat-create` angelegt.
-
-Im Projektverzeichnis befinden sich wichtige DEV TOOLS und Projektdokumente.
-
-**Deshalb:**
-
-Das Next.js-Grundgerüst ist bereits integriert; keine erneute Initialisierung über das bestehende Verzeichnis ausführen.
-
-Vorhandene Dateien und Ordner dürfen nicht versehentlich überschrieben werden.
-
-### 4 · Deployment und Domain
-
-Cloudflare Workers mit OpenNext ist eingerichtet; eine frühere Veröffentlichung wurde von Kat bestätigt. Der aktuelle lokale Kartenstand wurde noch nicht veröffentlicht.
-
-Die Anwendung kann zunächst über eine `workers.dev`-Adresse erreichbar gemacht werden.
-
-Die bestehende Domain `katcoded.de` und ihre E-Mail-Konfiguration sollen vorerst unverändert bleiben.
-
-### 5 · Datenbank und Sicherheit
-
-Das Neon-Projekt `katcoded-web` ist vorbereitet.
-
-Die Datenbankanbindung muss noch implementiert werden.
-
-Datenbank-Zugangsdaten gehören ausschließlich in geeignete Umgebungsvariablen und niemals ins öffentliche GitHub-Repository.
-
-Der Admin-Bereich benötigt eine echte serverseitige Zugriffskontrolle.
-
-Ein versteckter Navigationslink allein ist keine Zugriffssicherung.
-
-### 6 · Dokumentation und Arbeitsweise
-
-Die KAT DEV TOOLS bilden die Grundlage für meine Projektdokumentation.
-
-**Wichtige Dateien:**
-
-- `PROJECT_START.md` → Projektidee und Zielsetzung.
-- `PROJECT_REQUIREMENTS.md` → Funktionale Anforderungen.
-- `PROJECT_BUILD_GUIDE.md` → Technischer Entwicklungsfahrplan mit Lernbausteinen.
-- `PROJECT_STATE.md` → Aktueller Projektstand und nächster Schritt.
-- `NOTES.md` → Lose Gedanken und technische Zwischennotizen.
-
-Der Build Guide ist ein Entwicklungsfahrplan und darf bei Bedarf angepasst werden.
-
-Diese PROJECT STATE ist ein Savegame, kein tägliches Protokoll.
-
-### 7 · Aktueller Savepoint
-
-**Status:** Stage 01 abgeschlossen; Stage 02 in Arbeit. Karten mit Bildern, Labels und CUTE_COZY-CSS-Modules gestaltet und in Safari geprüft. TypeScript, ESLint und Produktionsbuild erfolgreich; Warnung und Prüflücken siehe oben.
-
-**Nächster Meilenstein:** Vollständigen Git-Checkpoint einschließlich der vier noch ignorierten Laufzeitbilder vorbereiten; anschließend offene Navigationsziele/Projektübersicht mit Kat abstimmen.
-
-### Vorgesehener Umfang des nächsten Checkpoints
-
-Noch keine Dateien gestaged. Nach Klärung der Bildaufnahme gehören sachlich zusammen:
-
-- `next.config.ts` — CSS-Modules-Korrektur.
-- `src/components/home/HomeCard.tsx` und `HomeCards.tsx` — vorhandene Bild-/Kategorien-Props und Styling-Anbindung.
-- `src/components/home/HomeCard.module.css` und `HomeCards.module.css` — ausgelagertes Styling.
-- `src/lib/images.ts` — Bildimporte.
-- `dev-tools/PROJECT_STATE.md`, `PROJECT_BUILD_GUIDE.md`, `PROJECT_REQUIREMENTS.md` — dieser Dokumentationsabgleich.
-- Die vier benötigten Dateien unter `design-system/CUTE_COZY/assets/cozy-originals/pixelkat/accessories/`: `49-cozy-notebook.webp`, `48-sticker-laptop.webp`, `06-cozy-cat-mug.webp`, `52-book-stack.webp`. Derzeit ignoriert; Aufnahme noch klären.
-- Eine dafür gegebenenfalls gezielte `.gitignore`-Anpassung ist erst nach Klärung vorzubereiten und wurde hier nicht vorgenommen.
-
-`references/`, Original-Assetarchive, lokale Umgebungsdateien und generierte Builddateien gehören nicht in den Checkpoint. Unveränderte Dateien wie `page.tsx`, `HomeHero.tsx` und `layout.tsx` brauchen keine neue Änderung.
-
-**Grenzen dieses Savepoints:** Nur State, Build Guide und Requirements aktualisiert. Keine Code-/Styling-/Konfigurationsänderungen, kein Commit, Push oder Deployment. Lokale Designreferenzen bleiben lokal.
+**Dieser Auftrag:** ausschließlich bestehende Markdown-Dateien aktualisiert; kein Code, Styling, Asset, Konfiguration, Commit, Push oder Deployment.
 
 ---
 

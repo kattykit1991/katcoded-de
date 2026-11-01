@@ -3,17 +3,19 @@
 > Der kurze Startpunkt für DAS DING™.
 > Hier wird geklärt, was ich bauen will, warum ich es bauen will und was für das aktuelle Ziel erstmal draußen bleibt.
 
+**Abgleich:** 01.11.2026 · Präsentationsversion v0.1 für Montag, 02.11.2026.
+
 ---
 
 ## 💡 THE THING™
 
 **Was baue ich?**
 
-Ich entwickle mit Next.js eine erste Version von **katcoded.de**, meiner öffentlichen Developer-Website, einschließlich eines geschützten Dashboards zur Verwaltung meiner Projekte.
+Ich entwickle mit Next.js, React und TypeScript **katcoded.de**, meine öffentliche Developer-Website.
 
-Auf der öffentlichen Website möchte ich mich als Softwareentwicklerin vorstellen und meine Projekte präsentieren. Über das Dashboard möchte ich Projektinformationen selbst verwalten können, ohne dafür jedes Mal den Website-Code bearbeiten zu müssen.
+Die Website stellt mich als angehende Softwareentwicklerin vor und zeigt ausgewählte Projekte, meinen Lernweg, meine Developer Tools und eine öffentliche Roadmap. Die fünf Seiten sind im lokalen Arbeitsstand umgesetzt.
 
-Langfristig soll katcoded.de mit meiner eigenständigen privaten Organisationszentrale **KATUARY** kommunizieren und ausgewählte Daten austauschen können. Diese Verbindung ist jedoch nicht Bestandteil des aktuellen WBS-Projekts.
+**Aktuelle Architekturentscheidung:** Ein privates Admin-Dashboard innerhalb von KATCODED.DE ist nicht mehr vorgesehen. Langfristig soll meine eigenständige private Anwendung **KATUARY** Projekte und Roadmap-Aufgaben verwalten. KATCODED.DE zeigt später ausschließlich ausdrücklich freigegebene öffentliche Informationen an. Die Verbindung ist nicht Teil von v0.1.
 
 ---
 
@@ -23,9 +25,9 @@ Langfristig soll katcoded.de mit meiner eigenständigen privaten Organisationsze
 
 Ich möchte mit **katcoded.de** eine eigene öffentliche Präsenz als Softwareentwicklerin aufbauen, auf der ich meine Entwicklung, meine Fähigkeiten und meine Projekte zeigen kann.
 
-Die Website soll langfristig mit mir wachsen und nicht nur ein einmaliges Portfolio-Projekt bleiben. Über das zugehörige Dashboard möchte ich meine Projektinformationen unkompliziert pflegen und aktualisieren können.
+Die Website soll langfristig mit mir wachsen und nicht nur ein einmaliges Portfolio-Projekt bleiben. Die spätere Pflege über KATUARY soll möglich werden, ohne eine zweite private Verwaltung in der Website aufzubauen.
 
-Gleichzeitig nutze ich das Projekt im Rahmen meiner Weiterbildung bei der WBS CODING SCHOOL, um praktische Erfahrungen mit **Next.js, React, TypeScript, serverseitiger Datenverarbeitung und Datenbanken** zu sammeln.
+Gleichzeitig nutze ich das Projekt im Rahmen meiner Weiterbildung bei der WBS CODING SCHOOL, um praktische Erfahrungen mit **Next.js, React, TypeScript, Komponenten, responsiven Oberflächen und zugänglichen Interaktionen** zu sammeln. Serverseitige Datenverarbeitung und Datenbanken bleiben spätere Lernfelder; sie sind hier noch nicht implementiert.
 
 Mir ist wichtig, etwas Eigenes zu entwickeln, das ich nach der Weiterbildung tatsächlich weiterverwenden und ausbauen kann.
 
@@ -35,23 +37,20 @@ Mir ist wichtig, etwas Eigenes zu entwickeln, das ich nach der Weiterbildung tat
 
 **Was ist das aktuelle Ziel, das ich erreichen will?**
 
-Mein aktuelles Ziel ist eine erste funktionsfähige Version von **katcoded.de** mit einer öffentlichen Portfolio-Ansicht und einem geschützten Verwaltungsdashboard.
+Die funktional weitgehend fertige öffentliche **v0.1** für die Präsentation am **02.11.2026** nachvollziehbar dokumentieren und die verbleibenden technischen Prüflücken klar benennen.
 
-Die erste Version soll folgende grundlegende Abläufe ermöglichen:
+**Im lokalen Arbeitsstand vorhanden:**
 
-- Eine öffentliche Website zeigt meine Developer-Identität und ausgewählte Projekte.
-- Ich kann mich in einem geschützten Administrationsbereich anmelden.
-- Ich kann Projekte über das Dashboard anlegen und ihre Informationen bearbeiten.
-- Projektinformationen werden dauerhaft in einer Datenbank gespeichert.
-- Ich kann selbst entscheiden, welche Projekte öffentlich auf katcoded.de sichtbar sind.
+- Homepage mit persönlicher Vorstellung und vier Themenkarten.
+- Projektgalerie mit statischen Daten, Kategorie-Filtern und Detaildialog.
+- About-Seite mit vier persönlichen Abschnitten und KI-Transparenzhinweis.
+- Dev-Tools-Seite mit Werkzeugen und Developer Environment.
+- Statisches Kanban-Board mit 13 Aufgaben und Detaildialog.
+- Gemeinsame Navigation und Footer, CUTE_COZY-Styling, lokale Schriften und KC-Favicon.
 
-Als technische Grundlage möchte ich **Next.js mit React und TypeScript** verwenden. Für die Datenbank ist **Neon PostgreSQL** vorgesehen. Die Bereitstellung über **Cloudflare Workers** wird angestrebt.
+**Technische Grundlage:** Next.js App Router, React, TypeScript, CSS Modules und CUTE_COZY. Tailwind CSS ist für bestehende Layout-/Navigationsklassen tatsächlich eingebunden. OpenNext-/Wrangler-Dateien sind vorhanden; der aktuelle lokale Stand ist dadurch nicht automatisch online geprüft.
 
-Das Ziel ist zunächst ein überschaubarer, funktionierender Kern, den ich im Rahmen meiner Weiterbildung umsetzen und anschließend schrittweise erweitern kann.
-
-Optional möchte ich Projekte auch in einzelne Aufgaben unterteilen und daraus automatisch einen Projektfortschritt berechnen lassen.
-
-Diese Funktionen sind jedoch keine Voraussetzung für die erste funktionsfähige Version. Sie werden nur umgesetzt, wenn es der zeitliche Rahmen erlaubt.
+**Noch abzusichern:** Produktionsbuild ohne die aktuelle Port-Binding-Beschränkung, vollständiger Git-/Asset-Checkpoint und gezielte Accessibility-/Semantikprüfung. Der genaue Prüfstand steht in `PROJECT_STATE.md`.
 
 ---
 
@@ -59,17 +58,26 @@ Diese Funktionen sind jedoch keine Voraussetzung für die erste funktionsfähige
 
 **Was gehört ausdrücklich noch nicht zum aktuellen Ziel?**
 
-Folgende Funktionen und Erweiterungen gehören ausdrücklich nicht zum verpflichtenden Umfang der ersten Version:
+- **Datenbank, API, Authentifizierung und Synchronisierung:** In v0.1 nicht implementiert. Die frühere Neon-Auswahl ist keine bestehende Anbindung und keine neue verbindliche Integrationsentscheidung.
+- **KATUARY-Integration:** Spätere Verbindung zwischen privater Verwaltung und ausschließlich freigegebenen öffentlichen Website-Daten; Schnittstelle und Datenvertrag noch festzulegen.
+- **Verwaltung im Browser:** Kein Login, Admin-Dashboard, CRUD, Bearbeiten oder Drag & Drop in KATCODED.DE.
+- **Umfangreiche Projektverwaltung:** Komplexe Aufgabenplanung, Abhängigkeiten, Meilensteine und Auswertungen sind kein v0.1-Auftrag.
+- **Community-Funktionen:** Kommentare, Interaktionen und weitere Besucherfunktionen bleiben Ideen.
+- **Pixelbabie Secrets:** Kleine interaktive Easter Eggs mit Plöpp, Floof und Nibbs bleiben geparkt.
+- **Weitere persönliche Website-Bereiche:** Keine zusätzlichen Seiten oder Funktionen für den Präsentationsabschluss.
+- **Automatische Fortschrittsberechnung:** Das frühere optionale Wunschfeature gehört nicht zum aktuellen v0.1-Umfang.
 
-- **KATUARY-Integration:** Eine spätere Verbindung zwischen katcoded.de und meiner eigenständigen privaten Organisationszentrale KATUARY, einschließlich ausgewählter Datensynchronisation.
-- **Umfangreiche Projektverwaltung:** Erweiterte Funktionen wie komplexe Aufgabenplanung, Abhängigkeiten, Meilensteine und detaillierte Auswertungen.
-- **Community-Funktionen:** Beispielsweise Kommentare, Interaktionen oder andere Möglichkeiten für Besucher, sich aktiv an der Website zu beteiligen.
-- **Pixelbabie Secrets:** Kleine interaktive Easter Eggs mit Plöpp, Floof und Nibbs, die Besucher auf der Website entdecken können.
-- **Weitere persönliche Website-Bereiche:** Zusätzliche Inhalte und Funktionen, die über die erste Portfolio- und Projektansicht hinausgehen.
+Diese Ideen werden nicht automatisch zu Anforderungen. Neue Schritte werden erst nach bewusster Entscheidung priorisiert.
 
-Eine einfache Aufgabenverwaltung mit automatischer Fortschrittsanzeige bleibt ein optionales Wunschfeature für die erste Version, ist aber keine Pflicht.
+---
 
-Diese Ideen werden nicht verworfen. Sie können nach Abschluss des ersten funktionsfähigen Kerns bewusst priorisiert und schrittweise umgesetzt werden.
+## 🕰️ HISTORISCHE AUSGANGSIDEE
+
+Die ursprüngliche Planung verband die öffentliche Website mit einem geschützten Projekt-Dashboard, Login, CRUD und Neon PostgreSQL. Ein Neon-Projekt `katcoded-web` war laut damaliger Dokumentation vorbereitet; ein aktueller externer Zustand wurde nicht geprüft.
+
+**Diese Architektur wurde am 01.11.2026 durch Kats Entscheidung ersetzt:** private Verwaltung in KATUARY, öffentliche Anzeige in KATCODED.DE. Die ursprünglichen Anforderungs-IDs und Lernbausteine bleiben in Requirements und Build Guide nachvollziehbar erhalten. Sie sind keine noch abzuarbeitenden v0.1-Pflichten.
+
+Das bestehende Next.js-Projekt nicht erneut initialisieren. Vorhandene DEV TOOLS und individuelle Dateien erhalten.
 
 ---
 
